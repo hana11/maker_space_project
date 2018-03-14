@@ -59,7 +59,6 @@
 </style>
 </head>
 <body>
-
 <%
       String CONTEXT_PATH = application.getContextPath();
 %>
@@ -86,9 +85,9 @@
             <div class="floatRight">
 					<form method="post" action="writeForTips.jsp">
 						<input type="hidden" name="category"
-							value=<%=request.getAttribute("category")%>> 
-						<input type="submit" class="btn btn-lg btn-primary"
-							style="display: inline-block;" value="글쓰기" />
+							value="tips"> 
+						<input type="submit" class="btn btn-lg btn-primary pull-right"
+							style="display: inline-block;" value="글쓰기" /><br>
 					</form>
 					<br>
 			</div>
@@ -117,6 +116,7 @@
 						</tfoot>
 					</c:if>
 					<tbody>
+
 							<c:forEach items="${tipMap.lists}" var="dto" varStatus="status">
 								<tr>
 									<td width="5"><c:out value="${tipMap.pageTotalCount - status.index}" /></td>
@@ -142,11 +142,12 @@
 							</c:if>
 							<c:if test="${tipMap.prevPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="tipboardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=tips&field=${tipMap.field}">&laquo;</a>
+
+									href="boardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=tips&field=${tipMap.field}">&laquo;</a>
 								</li>
 							</c:if>
 							<c:if test="${tipMap.pageCount <= 5}">
-								<c:forEach begin="${map.beginPage}"
+								<c:forEach begin="${tipMap.beginPage}"
 									end="${tipMap.beginPage + tipMap.pageCount - 1}" var="page">
 									<c:choose>
 										<c:when test="${tipMap.currentPage == page}">
@@ -155,7 +156,8 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="tipboardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
+
+												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -170,7 +172,8 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="tipboardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
+
+												href="boardcontroller?action=getBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -181,7 +184,8 @@
 							</c:if>
 							<c:if test="${tipMap.nextPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="tipboardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=tips">&raquo;</a>
+
+									href="boardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=tips">&raquo;</a>
 								</li>
 							</c:if>
 						</ul>
@@ -191,6 +195,7 @@
             <!-- Search bar -->
            	<%@include file="./include/searchbar.jsp" %>
             <!-- /.Search -->
+
          </div>
       </div>
    </div>

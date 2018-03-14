@@ -5,7 +5,6 @@
 
 <head>
 
-<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
@@ -43,6 +42,7 @@
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="">
+	
 		<%
 			if (session.getAttribute("name") != null) {
 		%>
@@ -56,10 +56,7 @@
 		%>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarColor01" aria-controls="navbarColor01"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
+			aria-expanded="false" aria-label="Toggle navigation"></button>
 		<div class="collapse navbar-collapse" id="navbarColor01">
 			<ul class="navbar-nav mr-auto">
 			</ul>
@@ -100,7 +97,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Get and Share Idea!</h1>
+					<h1 class="mb-5">당신의 아이디어를 공유하세요!</h1>
 				</div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
 					<form>
@@ -113,7 +110,7 @@
 
 							<div class="col-12 col-md-3">
 								<input type="button" class="btn btn-block btn-lg btn-primary"
-									onclick="location.href='search.jsp'" value="Search">
+									onclick="location.href='search.jsp'" value="검색">
 							</div>
 						</div>
 					</form>
@@ -130,12 +127,12 @@
       <div class="container">
          <div class="alert alert-dismissible alert-primary">
             <h2 class="alert-heading">
-               <a href="tipboardcontroller?action=getTipBoards&category=tips" class="alert-link">Monthly Tips Best 5</a>
+               <a href="tipboardcontroller?action=getTipBoards&category=tips" class="alert-link">3월 꿀팁 베스트 5</a>
             </h2>
          </div>
       </div>
       <div class="container">
-         <table class="table table-hover">
+         <table class="table table-hover" style="border: solid 2px #cccccc">
             <thead>
                <tr class="table-active">
                   <th scope="col">순위</th>
@@ -188,7 +185,7 @@
       <div class="container">
          <div class="alert alert-dismissible alert-primary">
             <h2 class="alert-heading">
-               <h2 class="alert-link">Business</h2>
+               <h2 class="alert-link">아이디어</h2>
             </h2>
          </div>
       </div>
@@ -197,38 +194,48 @@
             <div class="row">
                <div class="col-lg-3">
                   <div class="testimonial-item mx-auto mb-8 mb-lg-0">
+                     <a href="boardcontroller?action=getBoards&category=it">
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/it.png" alt="">
+                        </a>
                      <h3>
-                       <a href="boardcontroller?action=getBoards&category=it" class="alert-link">IT</a>
+                       <a href="boardcontroller?action=getBoards&category=it" class="alert-link">정보기술</a>
+
                      </h3>
                   </div>
                </div>
                <div class="col-lg-3">
                   <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <a href="boardcontroller?action=getBoards&category=market">
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/sales&marketing.png" alt="">
+                        </a>
                      <h3>
-                        <a href="boardcontroller?action=getBoards&category=market" class="alert-link">SALES
-                           & MARKETING</a>
+                        <a href="boardcontroller?action=getBoards&category=market" class="alert-link">영업 & 마케팅</a>
                      </h3>
                   </div>
                </div>
                <div class="col-lg-3">
                   <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <a href="boardcontroller?action=getBoards&category=media">
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/media.png" alt="">
+                       </a>
                      <h3>
-                        <a href ="boardcontroller?action=getBoards&category=media" class="alert-link">MEDIA</a>
+                        <a href ="boardcontroller?action=getBoards&category=media" class="alert-link">미디어</a>
+
                      </h3>
                   </div>
                </div>
                <div class="col-lg-3">
                   <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <a href="boardcontroller?action=getBoards&category=etc">
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/plus.png" alt="">
+                        </a>
                      <h3>
-                        <a href="boardcontroller?action=getBoards&category=plus" class="alert-link">PLUS</a>
+
+                        <a href="boardcontroller?action=getBoards&category=etc">기타</a>
                      </h3>
                   </div>
                </div>

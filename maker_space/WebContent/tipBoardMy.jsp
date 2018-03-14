@@ -1,7 +1,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
 
 <head>
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 <title>MakerSpace</title>
@@ -57,6 +57,7 @@
 
 .floatRight {
    float: right
+
 }
 </style>
 
@@ -65,8 +66,7 @@
    <%
       String CONTEXT_PATH = application.getContextPath();
    %>
-   <!-- Navigation -->
-   <!-- Navigation -->
+  <!-- Navigation -->
 	
 	<%@include file="./include/topMenu.jsp"%>
    <!-- Page Content -->
@@ -83,28 +83,26 @@
 				<br>
             <!-- Table -->
             <label for="exampleInputEmail1">&nbsp;</label> <br> <label
-               for="exampleInputEmail1">&nbsp;</label> <br> <label
-               for="exampleInputEmail1">&nbsp;</label> <br>
+               for="exampleInputEmail1">&nbsp;</label> 
             <div class="container">
                <ol class="breadcrumb">
-                  <li class="breadcrumb-item">Business</li>
-                  <li class="breadcrumb-item active">IT</li>
+                  <li class="breadcrumb-item">팁</li>
                </ol>
             </div>
             <div class="floatRight">
                <form method="post" action="tipboardcontroller">
                   <input type="hidden" name="tipBoardsIdx"
-                     value=<%=request.getAttribute("tipBoardsIdx")%>> <input
+                     value=<%=request.getAttribute("tip")%>> <input
                      type="hidden" name="function" value="edit"> <input
-                     type="hidden" name="action" value="getBoardEdit"> <input
-                     type="hidden" name="category" value="myTips"> <input
+                     type="hidden" name="action" value="getTipBoardEdit"> <input
+                     type="hidden" name="category" value="tip"> <input
                      type="submit" class="btn btn-block-lg btn-lg btn-primary"
                      style="display: inline-block;" value="Edit" />
                </form>
-               <form method="post" action="tipboardcontroller">
-                  <input type="hidden" name="tipBoardsIdx"
-                     value=<%=request.getAttribute("tipBoardsIdx")%>> <input
-                     type="hidden" name="category" value="myTips"> <input
+               <form method="post" action="boardcontroller">
+                  <input type="hidden" name="businessBoardsIdx"
+                     value=<%=request.getAttribute("businessBoardsIdx")%>> <input
+                     type="hidden" name="category" value="it"> <input
                      type="hidden" name="action" value="delete"> <input
                      type="submit" class="btn btn-block-lg btn-lg btn-primary"
                      style="display: inline-block;" value="Delete" />
@@ -160,35 +158,7 @@
             </div>
 
          </div>
-         <!-- Search bar -->
-         <form>
-            <div class="form-row">
-               <div class="col-12 col-md-2">
-                  <select name="select" class="btn btn-secondary my-2 my-sm-0">
-                     <option selected value=0>Select
-                     <option value=1>제목
-                     <option value=2>내용
-                  </select>
-               </div>
-
-               <div class="col-12 col-md-8 mb-2 mb-md-0">
-                  <input type="text" class="form-control form-control-lg"
-                     placeholder="# 5G # 1등 KT ... ">
-               </div>
-               <div class="col-12 col-md-2">
-                  <button type="button" class="btn btn-secondary my-2 my-sm-0"
-                     onclick="location.href='search.jsp'">Search</button>
-               </div>
-            </div>
-         </form>
-         <div class="form-row">
-            <div class="float-right">
-               <button type="submit" class="btn btn-block btn-lg btn-primary">Hash
-                  Tag</button>
-            </div>
-         </div>
-
-         <!-- /.Search -->
+         
       </div>
    </div>
 
@@ -204,6 +174,7 @@
    <script
       src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
    <script src="./Resource/mms/vendor/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

@@ -332,24 +332,27 @@ public class TipDao implements InterfaceBoard{
 	public int registerBoard(String category, IdeaBoard dto) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-	@Override
-	public ArrayList<IdeaBoard> findBoardName(String name) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<IdeaBoard> findBoardTitle(String title) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public ArrayList<IdeaBoard> findBoardContent(String content) {
-		// TODO Auto-generated method stub
-		return null;
+
 	}
 	@Override
 	public ArrayList<IdeaBoard> findBoardHashTag(String hashTag) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+
+	public ArrayList<IdeaBoard> findBoardTitle(int currentPage, int listSize, String title, String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+
+	public ArrayList<IdeaBoard> findBoardName(int currentPage, int listSize, String title, String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ArrayList<IdeaBoard> findBoardContent(int currentPage, int listSize, String title, String category) {
 		// TODO Auto-generated method stub
 		return null;
 	}

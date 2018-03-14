@@ -85,13 +85,13 @@
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputName">Name</label>
+								<label for="exampleInputName">이름</label>
 								<ol class="breadcrumb">
 									<%= dto.getName() %>
 								</ol>
 							</div>
 							<div class="col-md-6">
-								<label for="exampleInputPassword1">Password</label>
+								<label for="exampleInputPassword1">비밀번호</label>
 								<ol class="breadcrumb">
 									<%
                             String secureMemberPw = MyUtility.convertSecureString(dto.getPassword());
@@ -102,13 +102,13 @@
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputMobile">Phone Number</label>
+								<label for="exampleInputMobile">휴대폰 번호</label>
 								<ol class="breadcrumb">
 									<%= dto.getMobile() %>
 								</ol>
 							</div>
 							<div class="col-md-6">
-								<label for="exampleInputEmail1">Email address</label>
+								<label for="exampleInputEmail1">이메일</label>
 								<ol class="breadcrumb">
 									<%= dto.getEmail()%>
 								</ol>
@@ -117,13 +117,13 @@
 
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputCompany">Company</label>
+								<label for="exampleInputCompany">소속</label>
 								<ol class="breadcrumb">
 									<%= dto.getCompany() %>
 								</ol>
 							</div>
 							<div class="col-md-6">
-								<label for="exampleInputCompany">Point</label>
+								<label for="exampleInputCompany">포인트</label>
 								<ol class="breadcrumb">
 									<%= dto.getPoint()%>
 								</ol>
@@ -132,7 +132,7 @@
 
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputCompany">Grade</label>
+								<label for="exampleInputCompany">등급</label>
 								<ol class="breadcrumb">
 									<%= dto.getGrade() %>
 								</ol>

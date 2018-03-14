@@ -56,24 +56,24 @@
 				<legend>아이디어 공유</legend>
 				<div class="form-group">
 					<label for="exampleSelect1">제목</label> <input type="text"
-						class="form-control" name="title" placeholder="Enter title">
+						class="form-control" name="title" placeholder="제목을 입력하세요">
 				</div>
 				<div class="form-group">
-					<label for="exampleSelect1">Hash Tag</label> <input type="text"
-						class="form-control" name="hash_tag" placeholder="Enter hash tag">
+					<label for="exampleSelect1">해시태그</label> <input type="text"
+						class="form-control" name="hash_tag" placeholder="해시태그를 입력하세요">
 				</div>
 				<div class="form-group">
-					<label for="exampleTextarea">Expectation Effectiveness</label>
+					<label for="exampleTextarea">기대효과</label>
 					<textarea class="form-control" name="result" rows="6"
-						form="writeForm" placeholder="Enter expectation effectiveness"></textarea>
+						form="writeForm" placeholder="기대효과를 입력하세요"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleTextarea">Content</label>
+					<label for="exampleTextarea">내용</label>
 					<textarea class="form-control" name="content" rows="10"
-						form="writeForm" placeholder="Enter content"></textarea>
+						form="writeForm" placeholder="내용을 입력하세요"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleInputFile">File input</label> <input type="file"
+					<label for="exampleInputFile">첨부파일</label> <input type="file"
 						class="form-control-file" name="file" aria-describedby="fileHelp">
 					<small id="fileHelp" class="form-text text-muted">File max
 						capacity</small>
@@ -82,7 +82,7 @@
 					<input type="hidden" name="category" value=<%=request.getParameter("category")%>>
 					<input type="hidden" name="action" value="write">
 					<button type="submit" class="btn btn-block-sm btn-lg btn-primary"
-						style="display: inline-block;">Submit</button>
+						style="display: inline-block;">등록</button>
 				</div>
 			</fieldset>
 		</form>

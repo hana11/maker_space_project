@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,16 +7,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>íšŒì›ê°€ì…</title>
+<title>È¸¿ø°¡ÀÔ</title>
 <!-- Bootstrap core CSS-->
 <link href="./Resource/mms/vendor/bootstrap/css/bootstrap2.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 <!-- Custom fonts for this template-->
 <link href="./Resource/mms/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+   rel="stylesheet" type="text/css">
 <!-- Custom styles for this template-->
 <link href="./Resource/mms/css/sb-admin.css" rel="stylesheet">
 <!-- jquery -->
@@ -25,7 +25,7 @@
 </head>
 <script>
 $(document).ready(function(){
-	//ì¸ì¦ì½”ë“œë¥¼ ë©”ì¼ë¡œ ë°œì†¡í•˜ê³  ì½”ë“œë¥¼ ì €ì¥
+	
 	$("#auth").click(function() {
 	   var email = $("#email").val();
 	   if (email != "") {
@@ -44,6 +44,7 @@ $(document).ready(function(){
 	      alert('write your Email');
 	   }
 	});
+
 })
 
 
@@ -52,7 +53,7 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">
-				íšŒì›ê°€ì…
+				È¸¿ø°¡ÀÔ
 				<button type="button" class="close" aria-label="Close"
 					onclick="javascript:history.back()">
 					<span aria-hidden="true">&times;</span>
@@ -63,45 +64,45 @@ $(document).ready(function(){
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputName">ì´ë¦„</label> <input
+								<label for="exampleInputName">ÀÌ¸§</label> <input
 									class="form-control" name="name" type="text"
-									aria-describedby="nameHelp" placeholder="ì´ë¦„ì„ ì…ë ¥í•´ì£¼ì„¸ìš”">
+									aria-describedby="nameHelp" placeholder="ÀÌ¸§À» ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 							<div class="col-md-6">
-								<label for="exampleInputLastName">í•¸ë“œí° ë²ˆí˜¸</label> <input
+								<label for="exampleInputLastName">ÈŞ´ëÀüÈ­¹øÈ£</label> <input
 									class="form-control" name="mobile" type="text"
-									aria-describedby="nameHelp" placeholder="í•¸ë“œí°ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”">
+									aria-describedby="nameHelp" placeholder="ÈŞ´ëÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-8">
-								<label for="exampleInputEmail1">ì´ë©”ì¼ </label> 
-								<input class="form-control" name="email" type="email" id='email' aria-describedby="emailHelp" placeholder="ì´ë©”ì¼ì„ ì…ë ¥í•´ì£¼ì„¸ìš”">
+								<label for="exampleInputEmail1">ÀÌ¸ŞÀÏ </label> 
+								<input class="form-control" name="email" type="email" id='email' aria-describedby="emailHelp" placeholder="ÀÌ¸ŞÀÏÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 							<div class = "col-md-4">
 								<label for="exampleInputEmail1">&nbsp;</label>
-								<input class="btn btn-primary btn-block" type="button" class='btn' id='auth' value='ì¸ì¦ë²ˆí˜¸ ë°œì†¡'>
+								<input class="btn btn-primary btn-block" type="button" class='btn' id='auth' value='ÀÎÁõ ÄÚµå ¹ß¼Û'>
 							</div>
 							<div class="col-md-6">
 							<br>
-								<label for="confirmedEmailCode">ì¸ì¦ë²ˆí˜¸</label> 
-								<input class="form-control" name="code" type="text" Placeholder="ì¸ì¦ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”">
+								<label for="confirmedEmailCode">ÀÎÁõÄÚµå</label> 
+								<input class="form-control" name="code" type="text" Placeholder="ÄÚµå¸¦  ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputPassword1">ë¹„ë°€ë²ˆí˜¸</label> <input
+								<label for="exampleInputPassword1">ºñ¹Ğ¹øÈ£</label> <input
 									class="form-control" name="password" type="password"
-									placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”(6ìë¦¬ ì´ìƒ)">
+									placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 							<div class="col-md-6">
-								<label for="exampleConfirmPassword">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</label> <input
+								<label for="exampleConfirmPassword">ºñ¹Ğ¹øÈ£ È®ÀÎ</label> <input
 									class="form-control" name="confirmPassword" type="password"
-									placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œí•œë²ˆ ì…ë ¥í•´ì£¼ì„¸ìš”">
+									placeholder="ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 						</div>
 					</div>
@@ -109,8 +110,8 @@ $(document).ready(function(){
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputPassword1">ì†Œì†</label> 
-								<input class="form-control" name="company" type="text" placeholder="ì†Œì† íšŒì‚¬ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”">
+								<label for="exampleInputPassword1">¼Ò¼Ó</label> 
+								<input class="form-control" name="company" type="text" placeholder="¼Ò¼ÓÈ¸»ç¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä">
 							</div>
 						</div>
 					</div>
@@ -118,10 +119,10 @@ $(document).ready(function(){
 
 					<div class="text-center">
 						<input type="hidden" name="action" value="join">
-						<button type="submit" class="btn btn-primary btn-block">íšŒì›ê°€ì…</button>
+						<button type="submit" class="btn btn-primary btn-block">È¸¿ø°¡ÀÔ</button>
 
-						<a class="d-block small mt-3" href="login.jsp">ë¡œê·¸ì¸</a> <a
-							class="d-block small" href="forgot_password.jsp">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a>
+						<a class="d-block small mt-3" href="login.jsp">·Î±×ÀÎ</a> <a
+							class="d-block small" href="forgot_password.jsp">ºñ¹Ğ¹øÈ£ Ã£±â</a>
 					</div>
 				</form>
 			</div>
@@ -133,6 +134,7 @@ $(document).ready(function(){
 		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Core plugin JavaScript-->
 	<script src="./Resource/mms/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 </body>
 
 </html>

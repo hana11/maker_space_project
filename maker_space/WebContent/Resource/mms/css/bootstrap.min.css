@@ -76,12 +76,25 @@ body {
 	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
 		Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol";
-	font-size: 1rem;
-	font-weight: 700;
+	font-size: 0.8125rem;
+	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
 	text-align: left;
 	background-color: #FCFCFC
+}
+
+body3 {
+	margin: 0;
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.5;
+	color: #fff;
+	text-align: left;
+	background-color: #D9230F
 }
 
 [tabindex="-1"]:focus {
@@ -169,7 +182,14 @@ sup {
 }
 
 a {
-	color: #D9230F;
+	color: #373a3c;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects
+}
+
+b {
+	color: #ccc;
 	text-decoration: none;
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects
@@ -220,11 +240,10 @@ svg:not (:root ){
 	overflow: hidden
 }
 
-{
-border-collapse
-:
-collapse
+table {
+	border-collapse: collapse
 }
+
 caption {
 	padding-top: 0.75rem;
 	padding-bottom: 0.75rem;
@@ -1663,8 +1682,7 @@ pre code {
 	width: 100%;
 	max-width: 100%;
 	margin-bottom: 1rem;
-	background-color: transparent;
-	border: 1px solid #444444;
+	background-color: transparent
 }
 
 .table th, .table td {
@@ -2605,9 +2623,9 @@ a.btn.disabled, fieldset:disabled a.btn {
 .btn-success:not (:disabled ):not (.disabled ):active, .btn-success:not
 	(:disabled ):not (.disabled ).active, .show>.btn-success.dropdown-toggle
 	{
-	color: #fff;
-	background-color: #2f6405;
-	border-color: #295805
+	color: #212529;
+	background-color: #e6e5e5;
+	border-color: #dfdfdf
 }
 
 .btn-success:not (:disabled ):not (.disabled ):active:focus,
@@ -2642,7 +2660,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-info:not (:disabled ):not (.disabled ):active, .btn-info:not (:disabled
 	):not (.disabled ).active, .show>.btn-info.dropdown-toggle {
-	color: #fff;
+	color: #dfdfdf;
 	background-color: #02749c;
 	border-color: #016b90
 }
@@ -2680,7 +2698,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 .btn-warning:not (:disabled ):not (.disabled ):active, .btn-warning:not
 	(:disabled ):not (.disabled ).active, .show>.btn-warning.dropdown-toggle
 	{
-	color: #fff;
+	color: #dfdfdf;
 	background-color: #79377c;
 	border-color: #703373
 }
@@ -2717,7 +2735,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-danger:not (:disabled ):not (.disabled ):active, .btn-danger:not (:disabled
 	):not (.disabled ).active, .show>.btn-danger.dropdown-toggle {
-	color: #fff;
+	color: #dfdfdf;
 	background-color: #ac6819;
 	border-color: #a16117
 }
@@ -2791,7 +2809,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 
 .btn-dark:not (:disabled ):not (.disabled ):active, .btn-dark:not (:disabled
 	):not (.disabled ).active, .show>.btn-dark.dropdown-toggle {
-	color: #fff;
+	color: #dfdfdf;
 	background-color: #1f2021;
 	border-color: #191a1b
 }
@@ -2829,7 +2847,7 @@ a.btn.disabled, fieldset:disabled a.btn {
 .btn-outline-primary:not (:disabled ):not (.disabled ):active,
 	.btn-outline-primary:not (:disabled ):not (.disabled ).active, .show>.btn-outline-primary.dropdown-toggle
 	{
-	color: #fff;
+	color: #dfdfdf;
 	background-color: #D9230F;
 	border-color: #D9230F
 }
@@ -2868,8 +2886,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 	.btn-outline-secondary:not (:disabled ):not (.disabled ).active, .show>.btn-outline-secondary.dropdown-toggle
 	{
 	color: #212529;
-	background-color: #fff;
-	border-color: #fff
+	background-color: #dfdfdf;
+	border-color: #dfdfdf
 }
 
 .btn-outline-secondary:not (:disabled ):not (.disabled ):active:focus,
@@ -3058,8 +3076,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 	.btn-outline-light:not (:disabled ):not (.disabled ).active, .show>.btn-outline-light.dropdown-toggle
 	{
 	color: #212529;
-	background-color: #fff;
-	border-color: #fff
+	background-color: #dfdfdf;
+	border-color: #dfdfdf
 }
 
 .btn-outline-light:not (:disabled ):not (.disabled ):active:focus,
@@ -3342,13 +3360,13 @@ tbody.collapse.show {
 .dropdown-item:hover, .dropdown-item:focus {
 	color: #fff;
 	text-decoration: none;
-	background-color: #D9230F
+	background-color: #dfdfdf
 }
 
 .dropdown-item.active, .dropdown-item:active {
 	color: #fff;
 	text-decoration: none;
-	background-color: #D9230F
+	background-color: #dfdfdf
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -4029,7 +4047,7 @@ tbody.collapse.show {
 	padding-top: 0.74765625rem;
 	padding-bottom: 0.74765625rem;
 	margin-right: 1rem;
-	font-size: 2.015625rem;
+	font-size: 1.015625rem;
 	line-height: inherit;
 	white-space: nowrap
 }
@@ -6220,12 +6238,12 @@ a.bg-danger:hover, a.bg-danger:focus, button.bg-danger:hover, button.bg-danger:f
 }
 
 .bg-light {
-	background-color: #fff !important
+	background-color: #eeeee !important
 }
 
 a.bg-light:hover, a.bg-light:focus, button.bg-light:hover, button.bg-light:focus
 	{
-	background-color: #e6e5e5 !important
+	background-color: #eeeee !important
 }
 
 .bg-dark {
@@ -8810,7 +8828,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .bg-light {
-	border-color: #eeeeee
+	border-color: #eeeee
 }
 
 .btn-primary, .btn-primary:hover {

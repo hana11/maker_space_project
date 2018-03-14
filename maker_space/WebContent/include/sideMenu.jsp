@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <ul class="nav nav-pills flex-column">
 	<li class="nav-item"><a class="nav-link active">아이디어</a></li>
 	<li class="table-active"><a class="nav-link" href="boardcontroller?action=getBoards&category=it">정보기술</a></li>
@@ -9,6 +9,8 @@
 		href="boardcontroller?action=getBoards&category=media">미디어</a></li>
 	<li class="table-active"><a class="nav-link"
 		href="boardcontroller?action=getBoards&category=etc">기타</a></li>
+	<li class="table-active"><a class="nav-link" href="boardcontroller?action=getBoards&category=myIdea" >나의 아이디어</a></li>
+	
 	<br>
 	<li class="nav-item"><a class="nav-link active">꿀팁</a></li>
 	<li class="table-active"><a class="nav-link" href="tipboardcontroller?action=getTipBoards&category=tips">팁</a></li>
@@ -16,8 +18,8 @@
 	<li class="table-active"><a class="nav-link" href="myScraps.jsp">나의 팁 스크랩</a></li>
 	<br>
   
-  	<li class="nav-item"><a class="nav-link active">내 아이디어 현황</a>
-	<li class="table-active"><a class="nav-link" href="boardcontroller?action=getBoards&category=myIdea" >나의 아이디어</a>
+  	<li class="nav-item"><a class="nav-link active">나의 페이지</a>
+	
 	<li class="nav-item dropdown">
     <a class ="nav-link" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">아이디어 채택 현황</a>
     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">

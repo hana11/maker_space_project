@@ -27,6 +27,7 @@
 			<div class="card-header">
 				·Î±×ÀÎ
 				<button type="button" class="close" aria-label="Close" onclick="javascript:history.back()" >
+
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>

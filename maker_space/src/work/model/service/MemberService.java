@@ -55,7 +55,7 @@ public class MemberService {
     */
    public String confirmEmail(String email) {
 	   JavaMail mail= new JavaMail(email);
-	   String title="이메일 인증코드입니다";
+	   String title="[MakerSpace] 이메일 인증코드입니다";
 	   
 	   int[] numArr = new int[4];
 		StringBuffer sb = new StringBuffer();
@@ -164,6 +164,5 @@ public class MemberService {
    public int removeMemberByAdmin(String email) {
       return dao.removeMemberByAdmin(email);
    }
-   
    
 }

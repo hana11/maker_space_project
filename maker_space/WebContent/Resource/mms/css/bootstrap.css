@@ -171,7 +171,7 @@ sup {
 }
 
 a {
-  color: #D9230F;
+  color: #373a3c;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
@@ -6195,7 +6195,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #fff !important;
+  background-color: #eeeee !important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
@@ -9058,7 +9058,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .bg-light {
-  border-color: #eeeeee;
+  border-color: #eeeee;
 }
 
 .btn-primary,

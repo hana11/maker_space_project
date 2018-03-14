@@ -84,6 +84,20 @@ body {
 	background-color: #FCFCFC
 }
 
+body3 {
+	margin: 0;
+	font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+		Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.5;
+	color: #fff;
+	text-align: left;
+	background-color: #D9230F
+}
+
+
 [tabindex="-1"]:focus {
 	outline: 0 !important
 }
@@ -170,6 +184,13 @@ sup {
 
 a {
 	color: #373a3c;
+	text-decoration: none;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects
+}
+
+b {
+	color: #ccc;
 	text-decoration: none;
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects
@@ -2544,8 +2565,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 	(:disabled ):not (.disabled ).active, .show>.btn-primary.dropdown-toggle
 	{
 	color: #fff;
-	background-color: #a91b0c;
-	border-color: #9d190b
+	background-color: #dfdfdf;
+	border-color: #dfdfdf
 }
 
 .btn-primary:not (:disabled ):not (.disabled ):active:focus,

@@ -1,5 +1,12 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@ page import="work.model.dto.TipIdeaBoard"%>
+<%@ page import="work.util.MyUtility"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+   pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +14,7 @@
 
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
@@ -15,17 +22,17 @@
 
 <!-- Bootstrap core CSS -->
 <link href="./Resource/mms/vendor/bootstrap/css/bootstrap2.min.css"
-	rel="stylesheet">
+   rel="stylesheet">
 
 <!-- Custom fonts for this template -->
 <link href="./Resource/mms/vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
+   rel="stylesheet" type="text/css">
 <link
-	href="./Resource/mms/vendor/simple-line-icons/css/simple-line-icons.css"
-	rel="stylesheet" type="text/css">
+   href="./Resource/mms/vendor/simple-line-icons/css/simple-line-icons.css"
+   rel="stylesheet" type="text/css">
 <link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
-	rel="stylesheet" type="text/css">
+   href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+   rel="stylesheet" type="text/css">
 
 
 
@@ -33,17 +40,18 @@
 <link href="./Resource/mms/css/landing-page.min.css" rel="stylesheet">
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- Include jQuery Popup Overlay -->
+<link href="./Resource/popup/jquery.popupoverlay.js" rel="stylesheet">
 </head>
 
 <body class="" id="">
 
-	<!-- Navigation -->
+   <!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="">
 
 		<%
@@ -76,8 +84,8 @@
 		</div>
 	</nav>
 
+   
 
-	<!-- 중간 bar -->
 	<!-- 중간 bar -->
    <body2>
    <nav class="navbar navbar-expand-lg navbar-dark bg-primary2" id="">
@@ -111,82 +119,70 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-9 mx-auto">
-					<h1 class="mb-5">Get and Share Idea!</h1>
+					<h1 class="mb-5">당신의 아이디어를 공유하세요!</h1>
 				</div>
-				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-					<form>
-						<div class="form-row">
-							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="text" class="form-control form-control-lg"
-									placeholder="# 5G # 1등 KT ... ">
-							</div>
-							<div class="col-12 col-md-3">
-								<input type="button" class="btn btn-block btn-lg btn-primary"
-									onclick="location.href='search.jsp'" value="Search">
-							</div>
-						</div>
-					</form>
-				</div>
+				
 			</div>
 		</div>
 	</header>
 
 	<!-- 꿀팁 table -->
 	<br>
-	<section class="coolTips" id="coolTips">
-		<div class="container">
-			<div class="alert alert-dismissible alert-primary">
-				<h2 class="alert-heading">
-					<a href="login.jsp" class="alert-link">Monthly Tips Best 5</a>
-				</h2>
-			</div>
-		</div>
-		<div class="container">
-			<table class="table table-hover">
-				<thead>
-					<tr class="table-active">
-						<th scope="col">순위</th>
-						<th scope="col">제목</th>
-						<th scope="col">작성자</th>
-						<th scope="col">조회수</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td><a href="#" class="alert-link"> 아이고 세상에 이런일이</a></td>
-						<td>황보영</td>
-						<td>11</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Column content</td>
-						<td>Column content</td>
-						<td>Column content</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Column content</td>
-						<td>Column content</td>
-						<td>Column content</td>
-					</tr>
-					<tr>
-						<th scope="row">4</th>
-						<td>Column content</td>
-						<td>Column content</td>
-						<td>Column content</td>
-					</tr>
-					<tr>
-						<th scope="row">5</th>
-						<td>Column content</td>
-						<td>Column content</td>
-						<td>Column content</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
-
+	<label for="exampleInputEmail1">&nbsp;</label>
+   <br>
+   <section class="coolTips" id="coolTips">
+      <div class="container">
+         <div class="alert alert-dismissible alert-primary">
+            <h2 class="alert-heading">
+               <a href="tipboardcontroller?action=getTipBoards&category=tips" class="alert-link">3월 꿀팁 베스트 5</a>
+            </h2>
+         </div>
+      </div>
+      <div class="container">
+         <table class="table table-hover" style="border: solid 2px #cccccc">
+            <thead>
+               <tr class="table-active">
+                  <th scope="col">순위</th>
+                  <th scope="col">제목</th>
+                  <th scope="col">작성자</th>
+                  <th scope="col">조회수</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <th scope="row">1</th>
+                  <td><a href="#" class="alert-link"> 아이고 세상에 이런일이</a></td>
+                  <td>황보영</td>
+                  <td>11</td>
+               </tr>
+               <tr>
+                  <th scope="row">2</th>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+               </tr>
+               <tr>
+                  <th scope="row">3</th>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+               </tr>
+               <tr>
+                  <th scope="row">4</th>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+               </tr>
+               <tr>
+                  <th scope="row">5</th>
+                  <td>Column content</td>
+                  <td>Column content</td>
+                  <td>Column content</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </section>
 
 	<!-- 비즈니스 Icons Grid -->
 	<br>
@@ -203,8 +199,9 @@
 				<div class="row">
 					<div class="col-lg-3">
 						<div class="testimonial-item mx-auto mb-8 mb-lg-0">
+						<a href="login.jsp"> 
 							<img class="img-fluid rounded-circle mb-5"
-								src="./Resource/mms/img/it.png" alt="">
+								src="./Resource/mms/img/it.png" alt=""></a>
 							<h3>
 								<a href="login.jsp" class="alert-link">정보기술</a>
 							</h3>
@@ -212,8 +209,8 @@
 					</div>
 					<div class="col-lg-3">
 						<div class="testimonial-item mx-auto mb-5 mb-lg-0">
-							<a href="login.jsp"> <img
-								class="img-fluid rounded-circle mb-5"
+							<a href="login.jsp"> 
+							<img class="img-fluid rounded-circle mb-5"
 								src="./Resource/mms/img/sales&marketing.png" alt="">
 							</a>
 							<h3>
@@ -251,10 +248,10 @@
 
 	<%@include file="./include/footer.jsp"%>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+   <!-- Bootstrap core JavaScript -->
+   <script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
+   <script src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

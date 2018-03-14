@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<label for="exampleTextarea">기대효과</label>
 					<textarea class="form-control" name="result" rows="6"
-						form="writeForm" placeholder="기대효과"></textarea>
+						form="writeForm" placeholder="기대효과를 입력하세요"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="exampleTextarea">내용</label>

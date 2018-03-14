@@ -42,7 +42,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <style>
-.a {
+
+/* .a {
+>>>>>>> 8b6ba49c564fea1c762f7772f3c20744c3b4d4db
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -54,7 +56,10 @@
 
 .floatRight {
 	float: right;
+<<<<<<< HEAD
 }
+=======
+} */
 </style>
 </head>
 <body>
@@ -77,16 +82,18 @@
 				
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">아이디어</li>
+
 					</ol>
 				</div>
 				<div class="floatRight">
 					<form method="post" action="write.jsp">
 						<input type="hidden" name="category"
 							value=<%=request.getAttribute("category")%>> 
-						<input type="submit" class="btn btn-lg btn-primary"
-							style="display: inline-block;" value="글쓰기" />
+						<input type="submit" class="btn btn-lg btn-primary pull-right"
+							style="display: inline-block;" value="글쓰기" /><br>
 					</form>
 					<br>
+
 				</div>
 				<div class="container">
 					<table class="table table-hover" style="border: solid 2px #cccccc">
@@ -188,8 +195,6 @@
 			</div>
 		</div>
 	</div>
-	
-			
 	<!-- Footer -->
 	<%@include file="./include/footer.jsp"%>
 	<!-- Bootstrap core JavaScript -->

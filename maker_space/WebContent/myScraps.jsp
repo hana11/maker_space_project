@@ -82,6 +82,7 @@
 				<div class="container">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item">나의 스크랩</li>
+
 					</ol>
 				</div>
 				
@@ -96,6 +97,7 @@
 							<th scope="col">조회수</th>
 							<th scope="col">스크랩수</th>
 						</tr>
+
 						</thead>
 
 						<c:if test="${map.lists.size()==0 }">
@@ -106,6 +108,8 @@
 									<td width="50"></td>
 									<td width="10"></td>
 									<td width="5"></td>
+
+									<td width="5"></td>
 								</tr>
 							</tfoot>
 						</c:if>
@@ -114,11 +118,14 @@
 								<tr>
 									<td width="5"><c:out value="${map.pageTotalCount - status.index}" /></td>
 									<td width="250"><a
-										href="boardcontroller?action=getBoards&category=scrap&boardIndex=${dto.businessIdx}"><c:out
+
+										href="tipboardcontroller?action=getScrapBoard&category=scrap&tipBoardsIdx=${dto.tipIdx}"><c:out
 												value="${dto.title}" /></a></td>
 									<td width="50"><c:out value="${dto.name}" /></td>
 									<td width="10"><c:out value="${dto.writeDate}" /></td>
 									<td width="5"><c:out value="${dto.hits}" /></td>
+
+									<td width="5"><c:out value="${dto.scrap}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -179,24 +186,62 @@
 						</ul>
 					</div>
 
-				
-				
 
 
-				<!-- Paginatoin -->
-				<div class="text-center">
-					<ul class="pagination">
-						<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a>
-						</li>
-						<li class="page-item active"><a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">&raquo;</a>
-						</li>
-					</ul>
+				<div align="center">
+					<!-- Paginatoin -->
+					<div style="display: inline-block; vertical-align: middle;">
+						<ul class="pagination">
+							<c:if test="${tipMap.prevPage <= 0}">
+								<li class="page-item disabled"><a class="page-link">&laquo;</a>
+								</li>
+							</c:if>
+							<c:if test="${tipMap.prevPage > 0}">
+								<li class="page-item"><a class="page-link"
+									href="boardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=tips&field=${tipMap.field}">&laquo;</a>
+								</li>
+							</c:if>
+							<c:if test="${tipMap.pageCount <= 5}">
+								<c:forEach begin="${tipMap.beginPage}"
+									end="${tipMap.beginPage + tipMap.pageCount - 1}" var="page">
+									<c:choose>
+										<c:when test="${tipMap.currentPage == page}">
+											<li class="page-item active"><a class="page-link"
+												href="#">${page}</a>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</c:if>
+							<c:if test="${tipMap.pageCount > 5}">
+								<c:forEach begin="${tipMap.beginPage}" end="${tipMap.endPage}"
+									var="page">
+									<c:choose>
+										<c:when test="${tipMap.currentPage == page}">
+											<li class="page-item active"><a class="page-link"
+												href="#">${page}</a>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="boardcontroller?action=getBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</c:if>
+							<c:if test="${tipMap.nextPage <= 0}">
+								<li class="page-item disabled"><a class="page-link">&raquo;</a>
+								</li>
+							</c:if>
+							<c:if test="${tipMap.nextPage > 0}">
+								<li class="page-item"><a class="page-link"
+									href="boardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=tips">&raquo;</a>
+								</li>
+							</c:if>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

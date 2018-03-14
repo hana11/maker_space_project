@@ -79,7 +79,7 @@
                   <div class="form-group">
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputName">Name</label> 
+                           <label for="exampleInputName">¿Ã∏ß</label> 
                           	<ol class="breadcrumb">
   							<%= request.getAttribute("name") %>
 							</ol>
@@ -87,7 +87,7 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputMobile">Phone Number</label> 
+                           <label for="exampleInputMobile">»ﬁ¥Î∆˘ π¯»£</label> 
                             <ol class="breadcrumb">
   							<%= request.getAttribute("mobile") %>
 							</ol>
@@ -95,7 +95,7 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputEmail1">Email address</label> 
+                           <label for="exampleInputEmail1">¿Ã∏ﬁ¿œ ¡÷º“</label> 
                             <ol class="breadcrumb">
   							<%= request.getAttribute("email") %>
 							</ol>
@@ -103,7 +103,7 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputPassword1">Password</label> 
+                           <label for="exampleInputPassword1">∫Òπ–π¯»£</label> 
                             <ol class="breadcrumb">
   							<%= request.getAttribute("password") %>
 							</ol>
@@ -111,7 +111,7 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputCompany">Company</label>
+                           <label for="exampleInputCompany">º“º”</label>
                            	<ol class="breadcrumb">
   							<%= request.getAttribute("company") %>
 							</ol>
@@ -120,13 +120,13 @@
                   </div>
                  
                    <div class="form-row">
-                  	<div class="col-12 col-md-5">
+                  	<div class="col-12 col-md-6">
                         <input type="button" class="btn btn-block btn-lg btn-primary" onclick="location.href='editMyAccount.jsp'"
-                               value="ÏàòÏ†ï">
+                               value="ºˆ¡§">
                  	</div>
-                    <div class="col-12 col-md-5">
+                    <div class="col-12 col-md-6">
                         <input type="button" class="btn btn-block btn-lg btn-primary"
-                              onclick="location.href='deleteMyAccount.jsp'" value="ÏÇ≠Ï†ú">
+                              onclick="location.href='deleteMyAccount.jsp'" value="ªË¡¶">
                     </div>
                    </div>
                    

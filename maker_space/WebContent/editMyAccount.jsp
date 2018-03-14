@@ -58,7 +58,7 @@
 </head>
 <script>
    $(document).ready(function() {
-      //Ïù∏Ï¶ùÏΩîÎìúÎ•º Î©îÏùºÎ°ú Î∞úÏÜ°ÌïòÍ≥† ÏΩîÎìúÎ•º Ï†ÄÏû•
+	 //¿Œ¡ıƒ⁄µÂ∏¶ ∏ﬁ¿œ∑Œ πﬂº€«œ∞Ì ƒ⁄µÂ∏¶ ¿˙¿Â
       $("#auth").click(function() {
          var email = $("#email").val();
          if (email != "") {
@@ -74,7 +74,7 @@
                }
             })
          } else {
-            alert('write your Email');
+            alert('¿Ã∏ﬁ¿œ¿ª ¿˚æÓ¡÷ººø‰');
          }
       });
    })
@@ -106,7 +106,7 @@
                   <div class="form-group">
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputName">Name</label>
+                           <label for="exampleInputName">¿Ã∏ß</label>
                            <ol class="breadcrumb">
                               <%=session.getAttribute("name")%>
                            </ol>
@@ -114,7 +114,7 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputName">Email</label>
+                           <label for="exampleInputName">¿Ã∏ﬁ¿œ</label>
                            <ol class="breadcrumb">
                               <%=session.getAttribute("email")%>
                            </ol>
@@ -122,28 +122,28 @@
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputMobile">Phone Number</label> <input
+                           <label for="exampleInputMobile">»ﬁ¥Î∆˘π¯»£</label> <input
                               class="form-control" name="mobile" type="text"
-                              placeholder="mobile"><br>
+                              placeholder="»ﬁ¥Î∆˘ π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰"><br>
                         </div>
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputPassword1">Password</label> <input
+                           <label for="exampleInputPassword1">∫Òπ–π¯»£</label> <input
                               class="form-control" name="originalPassword" type="password"
-                              placeholder="original password">
+                              placeholder="±‚¡∏ ∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰">
                         </div>
                         <div class="col-md-6">
-                           <label for="exampleInputPassword1">New Password</label> <input
+                           <label for="exampleInputPassword1">ªı ∫Òπ–π¯»£</label> <input
                               class="form-control" name="newPassword" type="password"
-                              placeholder="new password"><br>
+                              placeholder="ªı ∫Òπ–π¯»£∏¶ ¿‘∑¬«ÿ¡÷ººø‰ "><br>
                         </div>
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputCompany">Company</label> <input
+                           <label for="exampleInputCompany">º“º”</label> <input
                               class="form-control" name="company" type="text"
-                              placeholder="company"><br>
+                              placeholder="º“º” »∏ªÁ∏¶ ¿‘∑¬«ÿ¡÷ººø‰"><br>
                         </div>
                      </div>
                   </div>
@@ -151,7 +151,7 @@
                <div class="form-row">
 					<div class="col-md-7">
 						<input type="hidden" name="action" value="updateMember">
-						<button type="submit" class="btn btn-block btn-lg btn-primary">ÏàòÏ†ï</button>
+						<button type="submit" class="btn btn-block btn-lg btn-primary">ºˆ¡§</button>
 					</div>
 
 				</div>

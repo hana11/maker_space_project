@@ -76,7 +76,7 @@
 			<%
 			ArrayList<Member> members = (ArrayList<Member>) request.getAttribute("members");
 			System.out.println("\n## members : " + members);
-		%>
+			%>
 			
 			<!-- Table -->
 			<div class="col-lg-9">

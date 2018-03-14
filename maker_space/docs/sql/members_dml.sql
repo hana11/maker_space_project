@@ -4,6 +4,31 @@ use space;
 show databases;
 show tables;
 
+/**
+ * TIP 용 DB
+ */
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values('회사생활 이것만 알면 즐겁게 할 수 있다','','',null,0,0,'jjihyun.park@ktds.com','2018.03.10','박지현');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( 'kt에서 효과적으로 복지를 누리고 싶다면!', '','',null,0,0,'haewon.park@ktds.com','2018.03.03','박혜원');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( 'ktds의 동아리 활동 꿀팁','','',null,0,0,'sunkyung.an@ktds.com','2018.02.18','안선경');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( 'ktds에서 멘토를 구하고 싶다면','','',null,0,0,'donghyun.lee@ktds.com','2018.02.18','이동현');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( '신입사원들을 위한 회사 근처 집 구하기 꿀팁','','',null,0,0,'jaejin.lee@ktds.com','2018.02.17','이재진');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( 'kt인으로서 자부심 갖기','','',null,0,0,'hokyung.lee@ktds.com','2018.03.03','이호경');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( '회사 안에서 나의 역할 찾기','','',null,0,0,'sunghan@ktds.com','2018.03.06','전성한');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( '회사 생활에서 회의가 느껴진다면 이것만 기억하세요','','',null,0,0,'hana.jeong@ktds.com','2018.03.13','정하나');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( '회사 안에서 꼭 필요한 인재가 되고 싶다면','','',null,0,0,'hyunyeong.jeong@ktds.com','2018.03.14','정현영');
+insert into tip_boards (title, content, result, files, hits, scraps, email, write_date , name)
+values( '사실 회사 생활 꿀팁이란 없다','','',null,0,0,'woosuk.ji@ktds.com','2018.03.08','지우석');
+
+
 insert into business (business_idx, business_name) values(1, 'it');
 insert into business (business_idx, business_name) values(2, 'market');
 insert into business (business_idx, business_name) values(3, 'media');
@@ -50,6 +75,7 @@ insert into members values
 ('sunkyung.an@ktds.com','sunkyung123','안선경','01015555555','kt ds', 'G',0);
 
 insert into members values 
+<<<<<<< HEAD
 ('donghyun.lee@ktds.com','donghyun123','이동현','01016666666','kt ds', 'G',0);
 
 insert into members values 
@@ -62,7 +88,8 @@ insert into members values
 ('sunghan.jeun@ktds.com','sunghan123','전성한','01019999999','kt ds', 'G',0);
 
 insert into members values 
-('hana.jeong@ktds.com','hana123','정하나','01021111111','kt ds', 'G',0);
+('hana.jeong@ktds.com','hana123','정하나','01021111111','kt ds', 'A',0);
+
 
 insert into members values 
 ('hyunyeong.jeong@ktds.com','hyunyeong123','정현영','01023333333','kt ds', 'G',0);
@@ -99,6 +126,7 @@ insert into members values
 
 insert into members values 
 ('yeong.hwangbo@kt.com','yeong123','황보영','01036666666','kt', 'G',0);
+<<<<<<< HEAD
 /*
 	각각의 서비스 쿼리
 */
@@ -212,6 +240,13 @@ values(4, '공중전화의 진화를 위한 방법','','',null,8,'hwiwon.kang@ktds.com','201
 
 
 
+=======
+commit;
+/*
+	각각의 서비스 쿼리
+*/
+rollback;
+>>>>>>> 8b6ba49c564fea1c762f7772f3c20744c3b4d4db
 select * from members;
 -- * 회원등록
 insert into members (MEMBER_ID, MEMBER_PW, NAME, MOBILE, EMAIL, ENTRY_DATE, GRADE, POSITION)

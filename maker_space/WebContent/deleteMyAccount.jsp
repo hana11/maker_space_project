@@ -110,14 +110,14 @@ $(document).ready(function(){
                      
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputName">Email</label> 
-  							<input class="form-control" name="email" type="email" placeholder="email"><br>
+                           <label for="exampleInputName">이메일</label> 
+  							<input class="form-control" name="email" type="email" placeholder="이메일을 입력해주세요"><br>
                         </div>
                      </div>
                      <div class="form-row">
                         <div class="col-md-6">
-                           <label for="exampleInputPassword1">Password</label> 
-                            <input class="form-control" name="password" type="password" placeholder="original password">
+                           <label for="exampleInputPassword1">비밀번호</label> 
+                            <input class="form-control" name="password" type="password" placeholder="비밀번호를 입력해주세요">
                         </div>
                      </div>
                   </div>

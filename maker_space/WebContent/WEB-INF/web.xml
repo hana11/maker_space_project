@@ -26,7 +26,10 @@
     <servlet-name>MemberServiceController</servlet-name>
     <url-pattern>/membercontroller</url-pattern>
   </servlet-mapping>
-  
+
+  <listener>
+    <listener-class>work.controller.InitListener</listener-class>
+  </listener>
   <servlet>
     <description></description>
     <display-name>TipBoardServiceController</display-name>

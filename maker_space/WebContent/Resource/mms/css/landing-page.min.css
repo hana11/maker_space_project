@@ -93,6 +93,20 @@ header.masthead h1 {
 	box-shadow: 0 5px 5px 0 #adb5bd
 }
 
+.testimonials2 {
+	padding-top: 2rem;
+	padding-bottom: 2rem
+}
+
+.testimonials2 .testimonial-item {
+	max-width: 5rem
+}
+
+.testimonials2 .testimonial-item img {
+	max-width: 5rem;
+	box-shadow: 0 5px 5px 0 #adb5bd
+}
+
 .call-to-action {
 	position: relative;
 	background-color: #343a40;

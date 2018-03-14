@@ -20,6 +20,7 @@
 <!-- Bootstrap side-bar menu -->
 <link href="./Resource/mms/vendor/bootstrap/css/shop-homepage.css"
 	rel="stylesheet">
+
 <!-- Custom fonts for this template -->
 <link href="./Resource/mms/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -31,6 +32,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
+
 <!-- Custom styles for this template -->
 <link href="./Resource/mms/css/landing-page.min.css" rel="stylesheet">
 <script
@@ -40,12 +42,14 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+
 <style>
 .a {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+<<<<<<< HEAD
 
 .writeBtnLoca {
 	text-algin: right;
@@ -83,6 +87,7 @@
             </ol>
             </div>
             
+
 				<div class="container">
 					<table class="table table-hover" style="border: solid 2px #cccccc">
 						<thead>
@@ -93,6 +98,7 @@
 								<th scope="col">작성일</th>
 								<th scope="col">조회수</th>
 								<th scope="col">스크랩수</th>
+
 							</tr>
 						</thead>
 
@@ -104,15 +110,18 @@
 									<td width="50"></td>
 									<td width="10"></td>
 									<td width="5"></td>
+
 								</tr>
 							</tfoot>
 						</c:if>
 						<tbody>
 							<c:forEach items="${tipMap.lists}" var="dto" varStatus="status">
 								<tr>
-									<td width="5"><c:out value="${tipMap.pageTotalCount - status.index}" /></td>
+
+									<td width="5"><c:out
+											value="${tipMap.pageTotalCount - status.index}" /></td>
 									<td width="240"><a
-										href="boardcontroller?action=getTipBoard&category=myTips&tipBoardsIndex=${dto.tipIdx}"><c:out
+										href="tipboardcontroller?action=getTipBoard&category=myTips&tipBoardsIndex=${dto.tipIdx}"><c:out
 												value="${dto.title}" /></a></td>
 									<td width="50"><c:out value="${dto.name}" /></td>
 									<td width="10"><c:out value="${dto.writeDate}" /></td>
@@ -133,7 +142,7 @@
 							</c:if>
 							<c:if test="${tipMap.prevPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=myTips&field=${tipMap.field }">&laquo;</a>
+									href="boardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=tips&field=${tipMap.field}">&laquo;</a>
 								</li>
 							</c:if>
 							<c:if test="${tipMap.pageCount <= 5}">
@@ -146,7 +155,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=myTips">${page}</a></li>
+												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -161,7 +170,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=myTips">${page}</a></li>
+												href="boardcontroller?action=getBoards&page=${page}&field=${tipMap.field}&category=tips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -172,16 +181,25 @@
 							</c:if>
 							<c:if test="${tipMap.nextPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=myTips">&raquo;</a>
+									href="boardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=tips">&raquo;</a>
 								</li>
 							</c:if>
 						</ul>
 					</div>
-           
-         </div>
-      </div>
-   </div>
-   </div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+
+	<%@include file="./include/footer.jsp"%>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
+	<script src="./Resource/mms/vendor/jquery/jquery.slim.min.js"></script>
+	<script
+		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="./Resource/mms/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

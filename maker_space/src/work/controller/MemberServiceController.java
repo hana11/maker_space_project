@@ -19,17 +19,20 @@ import work.model.service.MemberService;
  */
 public class MemberServiceController extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+	int unusedEmail = 0;
+	private MemberService memberService;
 	String code;
-    private MemberService memberService;
 
-    public MemberServiceController(){
-    	memberService = MemberService.getInstance();
+
+	public MemberServiceController() {
+		memberService = MemberService.getInstance();
 	}
-    protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-    	String action = request.getParameter("action");	
+
+	protected void process(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String action = request.getParameter("action");
 		System.out.println(action);
-		
 		switch(action) {
 		case "confirmEmail":
 			confirmEmail(request,response);
@@ -40,16 +43,16 @@ public class MemberServiceController extends HttpServlet {
 		case "logout":
 			logout(request, response);
 			break;
-		case "join" :
+		case "join":
 			join(request, response);
 			break;
 		case "removeMember" :
 			removeMember(request, response);
 			break;
-		case "updateMember" :
+		case "updateMember":
 			updateMember(request, response);
 			break;
-		case "forgotPassword" :
+		case "forgotPassword":
 			forgotPassword(request, response);
 			break;
 		case "createNewPassword" :
@@ -58,18 +61,18 @@ public class MemberServiceController extends HttpServlet {
 		case "getMyInfo" :
 			getMyInfo(request, response);
 			break;
-		case "removeMemberByAdmin" :
+		case "removeMemberByAdmin":
 			removeMemberByAdmin(request, response);
 			break;
-		case "getInfoByAdmin" :
+		case "getInfoByAdmin":
 			getInfoByAdmin(request, response);
 			break;
-		case "getAllInfoByAdmin" :
+		case "getAllInfoByAdmin":
 			getAllInfoByAdmin(request, response);
 			break;
-    	default :
-    		System.out.println("\n## 서비스 준비중입니다.");
-    		break;
+		default:
+			System.out.println("\n## 서비스 준비중입니다.");
+			break;
 		}
 	}
     /**
@@ -108,13 +111,10 @@ public class MemberServiceController extends HttpServlet {
     		code=memberService.confirmEmail(email);
     		out.print(code);
     		out.close();
-    		
     	}else {
     		out.println("Duplicated Email");
     		out.close();
     	}
-    	
-    	
     }
 	/**
 	 * 내 정보 조회 메서드
@@ -127,11 +127,11 @@ public class MemberServiceController extends HttpServlet {
     	System.out.println("\n## 내 정보 조회 요청");
 		
 		HttpSession session = request.getSession(false); 
-		
 		Member member = new Member();
-		member = memberService.getMyInfo((String)session.getAttribute("email"));
-		//System.out.println(member.getMemberId());
-		
+
+		member = memberService.getMyInfo((String) session.getAttribute("email"));
+		// System.out.println(member.getMemberId());
+
 		request.setAttribute("email", member.getEmail());
 		request.setAttribute("name", member.getName());
 		request.setAttribute("password", member.getPassword());
@@ -139,18 +139,8 @@ public class MemberServiceController extends HttpServlet {
 		request.setAttribute("company", member.getCompany());
 		request.setAttribute("grade", member.getGrade());
 		request.setAttribute("point", member.getPoint());
-		
 		request.getRequestDispatcher("myAccount.jsp").forward(request, response); 
-
 	}
-	/**
-     * 비밀번호 변경 메서드
-     * 
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
     private void forgotPassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	String originCode =code;
@@ -264,102 +254,80 @@ public class MemberServiceController extends HttpServlet {
     	
     	
     	if(result != 0) {
-			//탈퇴 성공
 			System.out.println("탈퇴성공");
 			String message = "탈퇴 되었습니다";
-			//회원전용 서비스 페이지 이동
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else {
-			
+
 			request.setAttribute("message", "탈퇴에 실패했습니다.");
 			request.getRequestDispatcher("error.jsp").forward(request, response);
-		}	
-    	
-    	
+		}
 	}
-	
 	/**
-     * 로그인 요청메서드
-     * 세션을 이용해 로그인.
-     * @param request
-     * @param response
-     * @throws ServletException
-     * @throws IOException
-     */
-    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	System.out.println("\n## 로그인 요청");
+	 * 로그인 요청
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("\n## 로그인 요청");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		
-		if(email==null || email.trim().length()==0)
-		{
-			String message = "이메일을 입력해주세요.";
-			request.setAttribute("message", message);
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
+		if (errorGenerate(request, response, email, "이메일을 입력해주세요!") != true) {
+			return;
 		}
-		if(password==null || password.trim().length()==0)
-		{
-			String message = "비밀번호를 입력해주세요.";
-			request.setAttribute("message", message);
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
+		if (errorGenerate(request, response, password, "패스워드를 입력해주세요!") != true) {
+			return;
 		}
-		
+
 		String grade = memberService.login(email, password);
-		if(grade !=null) {
-			
+		System.out.println(">>>!!");
+		if (grade != null) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("email", email);
 			session.setAttribute("grade", grade);
-			
 			Member member = memberService.getMyInfo(email);
-
+			session.setAttribute("name", member.getName());
 			if(member != null) {
 				session.setAttribute("name", member.getName());
 				session.setAttribute("company", member.getCompany());
 				session.setAttribute("password", member.getPassword());
 				session.setAttribute("mobile", member.getMobile());
 			}
-			
 			request.getRequestDispatcher("mainService.jsp").forward(request, response);
-			
 			System.out.println("로그인 성공");
 		} else {
-			request.setAttribute("message", "로그인에 실패했습니다.");
+			request.setAttribute("message", "잘못된 정보입력입니다!");
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
-		
 	}
-    /**
-     * 로그아웃 요청 메서드
-     * 로그인때 만들어진 세션과 입력한 이메일을 이용해서 세션을 죽이고 세션에 저장된 이메일을 지운다.
-     * @param request
-     * @param response
-     * @throws IOException
-     */
+
+	/**
+	 * 로그아웃 요청
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	private void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("\n## 로그아웃 요청");
-		
+
 		HttpSession session = request.getSession(false);
-		
-		if(session != null ) {
-			if(session.getAttribute("grade")!=null) {
-				session.removeAttribute("grade");	
+		if (session != null) {
+			if (session.getAttribute("grade") != null) {
+				session.removeAttribute("grade");
 			}
-			
 			session.invalidate();
 		}
 		response.sendRedirect("index.jsp");
-		
 	}
-		
+
 	/**
-	 * 회원가입 요청메서드
-	 * email, password,name mobile,company 를 입력 받아 회원 객체 생성 디비에 저장
+	 * 회원가입 요청 메서드
+	 * 
 	 * @param request
 	 * @param response
 	 * @throws ServletException
@@ -367,7 +335,6 @@ public class MemberServiceController extends HttpServlet {
 	 */
 	private void join(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("\n## 회원가입 요청");
-		
 		String originCode =code  ;
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -399,53 +366,53 @@ public class MemberServiceController extends HttpServlet {
 			nextView.forward(request, response);
 			return ;
 		}
-		if(password==null || password.trim().length()==0)
-		{
-			String message = "비밀번호를 입력해주세요.";
+		if (errorGenerate(request, response, name, "이름을 입력해주세요!") != true) {
+			return;
+		}
+		if (errorGenerate(request, response, mobile, "휴대전화번호를 입력해주세요!") != true) {
+			return;
+		}
+		if (errorGenerate(request, response, company, "회사명을 입력해주세요!") != true) {
+			return;
+		}
+		if (!(password.trim().length() >= 6 && password.trim().length() <= 30)) {
+			String message = "비밀번호를 6자리 이상 다시 입력해주세요!";
 			request.setAttribute("message", message);
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return;
 		}
-		if(!(password.trim().length() >= 6 && password.trim().length() <=30)) {
-			String message = "비밀번호 규정을 준수해주세요.";
+		if (!password.equals(confirmPassword)) {
+			String message = "비밀번호 입력이 일치하지 않습니다!";
 			request.setAttribute("message", message);
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return;
 		}
-		if(name==null || name.trim().length()==0) {
-			String message = "이름을 입력해주세요.";
+		int result = memberService.join(new Member(email, password, name, mobile, company, "G", 0));
+		if (result != 0) {
+			request.setAttribute("email", email);
+			request.setAttribute("password", password);
+			request.setAttribute("name", name);
+			request.setAttribute("mobile", mobile);
+			request.setAttribute("company", company);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			;
+		} else {
+			request.setAttribute("message", "이미 존재하는 이메일 혹은 이미 존재하는 전화번호 입니다!");
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+		}
+
+	}
+
+	protected boolean errorGenerate(HttpServletRequest request, HttpServletResponse response, String valuableName,
+			String message) throws ServletException, IOException {
+		if (valuableName == null || valuableName.trim().length() == 0) {
+			// 오류메세지 응답위한 설정
+			System.out.println("errorGenerate function");
 			request.setAttribute("message", message);
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
+			request.getRequestDispatcher("error.jsp").forward(request, response);
+			return false;
 		}
-		if(mobile==null || mobile.trim().length()==0)
-		{
-			String message = "핸드폰 번호를 입력해주세요.";
-			request.setAttribute("message", message);			
-			RequestDispatcher nextView = request.getRequestDispatcher("error.jsp");
-			nextView.forward(request, response);
-			return ;
-		}
-		
-		
-		int result =memberService.join(new Member(email, password, name, mobile, company));
-		System.out.println("회원가입디버깅 :: "+result+" 0 이 아니면 성공");
-		
-			if(result !=0) {
-				request.setAttribute("email", email);
-				request.setAttribute("password", password);
-				request.setAttribute("name", name);
-				request.setAttribute("mobile", mobile);
-				request.setAttribute("company", company);		
-				request.getRequestDispatcher("index.jsp").forward(request, response);;
-			} else {
-				request.setAttribute("message", "회원가입에 실패했습니다.");
-				request.getRequestDispatcher("error.jsp").forward(request, response);
-			}
-		
+		return true;
 	}
 	/**
      * 관리자 전용 메서드 - 회원 탈퇴 요청메서드 
@@ -461,12 +428,17 @@ public class MemberServiceController extends HttpServlet {
 		int result = memberService.removeMemberByAdmin(email);
 		
 		if(result != 0) {
-			//탈퇴 성공
-			System.out.println("탈퇴성공");
-			String message = "탈퇴 되었습니다";
-			//회원전용 서비스 페이지 이동
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("managerPage.jsp").forward(request, response);
+			 PrintWriter out = response.getWriter();
+		      response.resetBuffer();
+		      response.setContentType("text/html;charset=euc-kr");
+		      out.println("<script language='javascript'>");
+		      out.print("alert(\"");
+		      out.print("sucess delete Member.");
+		      out.println("\");");
+		      out.println("history.go(-1)");
+		      out.println("</script>");
+		      response.flushBuffer();
+		      return ;
 		} else {
 			
 			request.setAttribute("message", "탈퇴에 실패했습니다.");
@@ -509,16 +481,21 @@ public class MemberServiceController extends HttpServlet {
 		
 	}
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		process(request, response);
 	}
+
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		process(request, response);
-	}	
+	}
 }
