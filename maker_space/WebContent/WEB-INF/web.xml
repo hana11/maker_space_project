@@ -26,14 +26,15 @@
     <servlet-name>MemberServiceController</servlet-name>
     <url-pattern>/membercontroller</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <description></description>
-    <display-name>MyBoardServiceController</display-name>
-    <servlet-name>MyBoardServiceController</servlet-name>
-    <servlet-class>work.controller.MyBoardServiceController</servlet-class>
+    <display-name>TipBoardServiceController</display-name>
+    <servlet-name>TipBoardServiceController</servlet-name>
+    <servlet-class>work.controller.TipBoardServiceController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MyBoardServiceController</servlet-name>
-    <url-pattern>/myboardservicecontroller</url-pattern>
+    <servlet-name>TipBoardServiceController</servlet-name>
+    <url-pattern>/tipboardcontroller</url-pattern>
   </servlet-mapping>
 </web-app>

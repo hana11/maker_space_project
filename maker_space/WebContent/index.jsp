@@ -45,58 +45,64 @@
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="">
-		
-   <% if(session.getAttribute("name")!=null) { %>
+
+		<%
+			if (session.getAttribute("name") != null) {
+		%>
 		<a class="navbar-brand" href="mainService.jsp">MakerSpace</a>
-		<% 	}else { %>
+		<%
+			} else {
+		%>
 		<a class="navbar-brand" href="index.jsp">MakerSpace</a>
-		<%	}  %>
+		<%
+			}
+		%>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarColor01" aria-controls="navbarColor01"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+			aria-expanded="false" aria-label="Toggle navigation"></button>
 
 		<div class="collapse navbar-collapse" id="navbarColor01">
 			<ul class="navbar-nav mr-auto">
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<button type="button" class="btn btn-secondary my-2 my-sm-0"
-					onclick="location.href='login.jsp'">Sign in</button>
+					onclick="location.href='login.jsp'">로그인</button>
 			</form>
 			&nbsp; &nbsp;
 			<form class="form-inline my-2 my-lg-0">
 				<button type="button" class="btn btn-secondary my-2 my-sm-0"
-					onclick="location.href='register.jsp'">Sign up</button>
+					onclick="location.href='register.jsp'">회원가입</button>
 			</form>
 		</div>
 	</nav>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary2" id="">
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav mx-auto">
-					<li class="nav-item active px-lg-4"><a
-						class="nav-link text-uppercase text-expanded" href="index.jsp">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item px-lg-4"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#coolTips">Tips</a></li>
-					<li class="nav-item px-lg-4"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#business">Business</a></li>
-
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<!-- 중간 bar -->
+	<!-- 중간 bar -->
+   <body2>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary2" id="">
+      <div class="container">
+         <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mx-auto">
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="index.jsp">홈</a></li>
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="#coolTips">팁</a></li>
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="#business">아이디어</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   </body2>
 
 
 	<!-- Masthead -->
@@ -114,8 +120,6 @@
 								<input type="text" class="form-control form-control-lg"
 									placeholder="# 5G # 1등 KT ... ">
 							</div>
-							
-
 							<div class="col-12 col-md-3">
 								<input type="button" class="btn btn-block btn-lg btn-primary"
 									onclick="location.href='search.jsp'" value="Search">
@@ -125,126 +129,127 @@
 				</div>
 			</div>
 		</div>
-
 	</header>
 
 	<!-- 꿀팁 table -->
-		<!-- 꿀팁 table -->
-   <label for="exampleInputEmail1">&nbsp;</label>
-   <br>
-   <section class="coolTips" id="coolTips">
-      <div class="container">
-         <div class="alert alert-dismissible alert-primary">
-            <h2 class="alert-heading">
-               <a href="coolTips.jsp" class="alert-link">Monthly Tips Best 5</a>
-            </h2>
-         </div>
-      </div>
-      <div class="container">
-         <table class="table table-hover">
-            <thead>
-               <tr class="table-active">
-                  <th scope="col">순위</th>
-                  <th scope="col">제목</th>
-                  <th scope="col">작성자</th>
-                  <th scope="col">조회수</th>
-               </tr>
-            </thead>
-            <tbody>
-               <tr>
-                  <th scope="row">1</th>
-                  <td><a href="#" class="alert-link"> 아이고 세상에 이런일이</a></td>
-                  <td>황보영</td>
-                  <td>11</td>
-               </tr>
-               <tr>
-                  <th scope="row">2</th>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-               </tr>
-               <tr>
-                  <th scope="row">3</th>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-               </tr>
-               <tr>
-                  <th scope="row">4</th>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-               </tr>
-               <tr>
-                  <th scope="row">5</th>
-                  <td>Column content</td>
-                  <td>Column content</td>
-                  <td>Column content</td>
-               </tr>
-            </tbody>
-         </table>
-      </div>
-   </section>
-
-   <!-- 비즈니스 Icons Grid -->
-   
-   <label for="exampleInputEmail1">&nbsp;</label>
-   <br>
-   <section class="business" id="business">
-      <div class="container">
-         <div class="alert alert-dismissible alert-primary">
-            <h2 class="alert-heading">
-               <h2 class="alert-link">Business</h2>
-            </h2>
-         </div>
-      </div>
-      <section class="testimonials text-center bg-light">
-         <div class="container">
-            <div class="row">
-               <div class="col-lg-3">
-                  <div class="testimonial-item mx-auto mb-8 mb-lg-0">
-                     <img class="img-fluid rounded-circle mb-5"
-                        src="./Resource/mms/img/it.png" alt="">
-                     <h3>
-                        <a href="businessIt.jsp" class="alert-link">IT</a>
-                     </h3>
-                  </div>
-               </div>
-               <div class="col-lg-3">
-                  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                     <img class="img-fluid rounded-circle mb-5"
-                        src="./Resource/mms/img/sales&marketing.png" alt="">
-                     <h3>
-                        <a href="businessSalesMarketing.jsp" class="alert-link">SALES
-                           & MARKETING</a>
-                     </h3>
-                  </div>
-               </div>
-               <div class="col-lg-3">
-                  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                     <img class="img-fluid rounded-circle mb-5"
-                        src="./Resource/mms/img/media.png" alt="">
-                     <h3>
-                        <a href="businessMedia.jsp" class="alert-link">MEDIA</a>
-                     </h3>
-                  </div>
-               </div>
-               <div class="col-lg-3">
-                  <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                     <img class="img-fluid rounded-circle mb-5"
-                        src="./Resource/mms/img/plus.png" alt="">
-                     <h3>
-                        <a href="businessPlus.jsp" class="alert-link">PLUS</a>
-                     </h3>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </section>
-   </section>
+	<br>
+	<section class="coolTips" id="coolTips">
+		<div class="container">
+			<div class="alert alert-dismissible alert-primary">
+				<h2 class="alert-heading">
+					<a href="login.jsp" class="alert-link">Monthly Tips Best 5</a>
+				</h2>
+			</div>
+		</div>
+		<div class="container">
+			<table class="table table-hover">
+				<thead>
+					<tr class="table-active">
+						<th scope="col">순위</th>
+						<th scope="col">제목</th>
+						<th scope="col">작성자</th>
+						<th scope="col">조회수</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td><a href="#" class="alert-link"> 아이고 세상에 이런일이</a></td>
+						<td>황보영</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr>
+						<th scope="row">4</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+					<tr>
+						<th scope="row">5</th>
+						<td>Column content</td>
+						<td>Column content</td>
+						<td>Column content</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
 
 
-	<%@include file="./include/footer.jsp" %>
+	<!-- 비즈니스 Icons Grid -->
+	<br>
+	<section class="business" id="business">
+		<div class="container">
+			<div class="alert alert-dismissible alert-primary">
+				<h2 class="alert-heading">
+					<h2 class="alert-link">아이디어</h2>
+				</h2>
+			</div>
+		</div>
+		<section class="testimonials text-center bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="testimonial-item mx-auto mb-8 mb-lg-0">
+							<img class="img-fluid rounded-circle mb-5"
+								src="./Resource/mms/img/it.png" alt="">
+							<h3>
+								<a href="login.jsp" class="alert-link">정보기술</a>
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+							<a href="login.jsp"> <img
+								class="img-fluid rounded-circle mb-5"
+								src="./Resource/mms/img/sales&marketing.png" alt="">
+							</a>
+							<h3>
+								<a href="login.jsp" class="alert-link">영업 & 마케팅</a>
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+							<a href="login.jsp"> <img
+								class="img-fluid rounded-circle mb-5"
+								src="./Resource/mms/img/media.png" alt="">
+							</a>
+							<h3>
+								<a href="login.jsp" class="alert-link">미디어</a>
+							</h3>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="testimonial-item mx-auto mb-5 mb-lg-0">
+							<a href="login.jsp"> <img
+								class="img-fluid rounded-circle mb-5"
+								src="./Resource/mms/img/plus.png" alt="">
+							</a>
+							<h3>
+								<a href="login.jsp" class="alert-link">기타</a>
+							</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+
+
+	<%@include file="./include/footer.jsp"%>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>

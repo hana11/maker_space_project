@@ -294,13 +294,21 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		ResultSet rsCnt = null;
 		try {
 			conn = factory.getConnection();
 			String sql = "select * from members";
 			pstmt = (PreparedStatement) conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			ArrayList<Member> members = new ArrayList<Member>();
-
+			
+			/*sql = "select count(*) from members";
+			conn.prepareStatement(sql);
+			rsCnt = pstmt.executeQuery();
+			if(rsCnt.next()) {
+				int totalNum = rsCnt.getInt(1);
+			}*/
+			
 			String email, password, name, mobile, company, grade;
 			int point;
 

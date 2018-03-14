@@ -12,25 +12,24 @@
 <meta name="author" content="">
 
 <title>MakerSpace</title>
-
+<link rel="stylesheet" href="./Resource/mms/vendor/bootstrap/css/my.css" />
 <!-- Bootstrap core CSS -->
 <link href="./Resource/mms/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <!-- Bootstrap side-bar menu -->
 <link href="./Resource/mms/vendor/bootstrap/css/shop-homepage.css"
 	rel="stylesheet">
-
 <!-- Custom fonts for this template -->
 <link href="./Resource/mms/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="./Resource/mms/vendor/simple-line-icons/css/simple-line-icons.css"
 	rel="stylesheet" type="text/css">
+<link href="./Resource/mms/vendor/simple-line-icons/css/my.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
 	rel="stylesheet" type="text/css">
-
 <!-- Custom styles for this template -->
 <link href="./Resource/mms/css/landing-page.min.css" rel="stylesheet">
 <script
@@ -40,43 +39,40 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+<style>
+.a {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.writeBtnLoca {
+	text-algin: right;
+}
+
+.floatRight {
+	float: right;
+}
+</style>
 </head>
 
 <body>
 	<%
 		String CONTEXT_PATH = application.getContextPath();
 	%>
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-			<% if(session.getAttribute("name")!=null) { %>
-		<a class="navbar-brand" href="mainService.jsp">MakerSpace</a>
-		<% 	}else { %>
-		<a class="navbar-brand" href="index.jsp">MakerSpace</a>
-		<%	}  %>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarColor01">
-				<ul class="navbar-nav mr-auto">
-
-				</ul>
- 			<%@include file="./include/loginInfo.jsp" %>
-			</div>
-	</nav>
-
-	<!-- Page Content -->
-	<div class="container">
-		<div class="row">
-			<!-- Side Menu -->
-			<div class="col-lg-3">
-				<h1 class="my-4">Manager Page</h1>
-				<%@include file="./include/sideMenu.jsp" %>
-			</div>
-			<!-- /.Side Menu -->
-
-			<!-- 전체 회원 조회 -->
+ <!-- Navigation -->
+	
+	<%@include file="./include/topMenu.jsp"%>
+   <!-- Page Content -->
+   <div class="container">
+      <div class="row">
+         <!-- Side Menu -->
+         <div class="col-lg-3">
+           <h1 class="my-4">&nbsp;</h1>
+            <%@include file="./include/sideMenu.jsp"%>
+         </div>
+			
+			<!-- Table -->
 			<div class="col-lg-9">
 				<h1 class="my-4">&nbsp;</h1>
 				<div class="container">

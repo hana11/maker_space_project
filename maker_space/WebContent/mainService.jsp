@@ -68,30 +68,30 @@
 	</nav>
 
 
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary2" id="">
-		<div class="container">
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav mx-auto">
-					<li class="nav-item active px-lg-4"><a
-						class="nav-link text-uppercase text-expanded"
-						href="mainService.jsp">Home <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item px-lg-4"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#coolTips">Tips</a></li>
-					<li class="nav-item px-lg-4"><a
-						class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-						href="#business">Business</a></li>
-
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<body2>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary2" id="">
+      <div class="container">
+         <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mx-auto">
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="index.jsp">홈</a></li>
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="#coolTips">팁</a></li>
+               <li class="nav-item px-lg-4"><a
+                  class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                  href="#business">아이디어</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   </body2>
 
 
 	<!-- Masthead -->
@@ -130,7 +130,7 @@
       <div class="container">
          <div class="alert alert-dismissible alert-primary">
             <h2 class="alert-heading">
-               <a href="coolTips.jsp" class="alert-link">Monthly Tips Best 5</a>
+               <a href="tipboardcontroller?action=getTipBoards&category=tips" class="alert-link">Monthly Tips Best 5</a>
             </h2>
          </div>
       </div>
@@ -209,7 +209,7 @@
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/sales&marketing.png" alt="">
                      <h3>
-                        <a href="businessSalesMarketing.jsp" class="alert-link">SALES
+                        <a href="boardcontroller?action=getBoards&category=market" class="alert-link">SALES
                            & MARKETING</a>
                      </h3>
                   </div>
@@ -219,7 +219,7 @@
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/media.png" alt="">
                      <h3>
-                        <a href="businessMedia.jsp" class="alert-link">MEDIA</a>
+                        <a href ="boardcontroller?action=getBoards&category=media" class="alert-link">MEDIA</a>
                      </h3>
                   </div>
                </div>
@@ -228,7 +228,7 @@
                      <img class="img-fluid rounded-circle mb-5"
                         src="./Resource/mms/img/plus.png" alt="">
                      <h3>
-                        <a href="businessPlus.jsp" class="alert-link">PLUS</a>
+                        <a href="boardcontroller?action=getBoards&category=plus" class="alert-link">PLUS</a>
                      </h3>
                   </div>
                </div>

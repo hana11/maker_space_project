@@ -29,6 +29,7 @@ public class BoardService {
 	private BusinessDao businessDao;
 	private HashTagDao hashTagDao;
 	private MemberDao memberDao;
+	private TipDao tipDao;
 
 	/**
 	 * 기본생성자
@@ -37,6 +38,7 @@ public class BoardService {
 		businessDao = BusinessDao.getInstance();
 		hashTagDao = HashTagDao.getInstance();
 		memberDao = MemberDao.getInstance();
+		tipDao = tipDao.getInstance();
 	}
 
 	/**
@@ -62,11 +64,9 @@ public class BoardService {
 		return businessDao.registerBoard(category, dto);
 	}
 	public int tipWrite(String category, TipIdeaBoard dto) {
-		return businessDao.registerTipBoard(category, dto);
+		return tipDao.registerBoard(category, dto);
 	}
-	public int myTipWrite(String category, int tipIdx) {
-		return businessDao.registerMyBoard(category, tipIdx);
-	}
+	
 	/**
 	 * 글삭제 서비스
 	 * 
@@ -115,7 +115,13 @@ public class BoardService {
 	public int registerMySelect(String category, int boardIdx) {
 		return businessDao.registerMySelect(category, boardIdx);
 	}
-
+	public int registerMyScraps(String category ,int tipIdx) {
+		return businessDao.registerMyScraps(category, tipIdx);
+	}
+	public int updateHits(int businessBoardsIndex) {
+		return businessDao.updateHits(businessBoardsIndex);
+	}
+	
 	/**
 	 * 해시태그 등록 서비스
 	 * 
@@ -132,8 +138,15 @@ public class BoardService {
 		}
 		return 1;
 	}
-	public Map<String, Object> getTipBoards(int currentPage, String category) {
-		int totalCount = businessDao.getTotalTipCount();	
+	public Map<String, Object> getTipBoards(int currentPage, String category, String email) {
+		int totalCount = 0;
+		if(category.equals("tips")) {
+			totalCount = businessDao.getTotalTipCount();
+		} else if(category.equals("myTips")) {
+			totalCount = businessDao.getTotalMyTipCount(email);	
+		} else {
+			return null;
+		}
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);
 		int blockCount = (int) Math.ceil((double) pageCount / PAGE_SIZE);
 		int currentBlock = (int) Math.ceil((double) currentPage / PAGE_SIZE);
@@ -160,11 +173,15 @@ public class BoardService {
 		System.out.println("nextPage = "+ nextPage);
 		System.out.println("endPage = "+ endPage);
 		// 4. 멤버 리스트 가져오기
-		ArrayList<TipIdeaBoard> lists = businessDao.getTipBoards(currentPage, LIST_SIZE, category);
+		ArrayList<TipIdeaBoard> lists = businessDao.getTipBoards(currentPage, LIST_SIZE, category, email);
+		
+		for(int i = 0 ; i < lists.size() ; i++) {
+			System.out.println(lists.get(i));
+		}
 		// 5. 리스트 정보를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("lists", lists);
-
+		map.put("pageTotalCount", totalCount-((currentPage-1)*10));
 		// 6. 각종 페이지 정보 맵에 저장
 		map.put("totalCount", totalCount);
 		map.put("pageSize", PAGE_SIZE);
@@ -179,18 +196,34 @@ public class BoardService {
 		map.put("nextPage", nextPage);
 		return map;
 	}
-	public Map<String, Object> getBoards(int currentPage, String category) {
+	public Map<String, Object> getBoards(int currentPage, String category, String _email) {
 		// 1. 초기값 계산
-		int totalCount = businessDao.getTotalCount();	
+		String email = _email;
+		int totalCount=0;
+		if(category.equals("it")) {
+			totalCount = businessDao.getTotalItCount();
+		} else if(category.equals("market")) {
+			totalCount = businessDao.getTotalMarketCount();
+		} else if(category.equals("media")) {
+			totalCount = businessDao.getTotalMediaCount();
+		} else if(category.equals("etc")) {
+			totalCount = businessDao.getTotalEtcCount();
+		} else if(category.equals("myIdea")) { // 내 아이디어 게시판 페이지수 정하기 위한 카운트
+			totalCount = businessDao.getTotalMyCount(email);
+		} else if(category.equals("myTips")) { // 내 아이디어 게시판 페이지수 정하기 위한 카운트
+			totalCount = businessDao.getTotalMyTipCount(email);
+		} 
+		
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);
 		int blockCount = (int) Math.ceil((double) pageCount / PAGE_SIZE);
 		int currentBlock = (int) Math.ceil((double) currentPage / PAGE_SIZE);
 
+		
 		System.out.println("totalcount = "+ totalCount);
 		System.out.println("pageCount = "+ pageCount);
 		System.out.println("blockCount = "+ blockCount);
 		System.out.println("currentBlock = "+ currentBlock);
-		
+		  
 		
 		// 2. 파라미터 page 값 검증
 		if (currentPage < 1) {
@@ -210,12 +243,14 @@ public class BoardService {
 		System.out.println("prevPage = "+ prevPage);
 		System.out.println("nextPage = "+ nextPage);
 		System.out.println("endPage = "+ endPage);
+		
 		// 4. 멤버 리스트 가져오기
-		ArrayList<IdeaBoard> lists = businessDao.getBoards(currentPage, LIST_SIZE, category);
+	
+		ArrayList<IdeaBoard> lists = businessDao.getBoards(currentPage, LIST_SIZE, category, email);
 		// 5. 리스트 정보를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("lists", lists);
-
+		map.put("pageTotalCount", totalCount-((currentPage-1)*10));
 		// 6. 각종 페이지 정보 맵에 저장
 		map.put("totalCount", totalCount);
 		map.put("pageSize", PAGE_SIZE);
@@ -230,11 +265,14 @@ public class BoardService {
 		map.put("nextPage", nextPage);
 		return map;
 	}
+	
 	public IdeaBoard getBoard(int businessBoardsIndex) {
 		return businessDao.getBoard(businessBoardsIndex);
 	}
 	public TipIdeaBoard getTipBoard(int TipBoardsIndex) {
 		return businessDao.getTipBoard(TipBoardsIndex);
 	}
+
+
 	
 }

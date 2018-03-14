@@ -41,41 +41,21 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
-<
+
 <body>
-
+	<% String category = request.getParameter("category");%>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			 <% if(session.getAttribute("name")!=null) { %>
-		<a class="navbar-brand" href="mainService.jsp">MakerSpace</a>
-		<% 	}else { %>
-		<a class="navbar-brand" href="index.jsp">MakerSpace</a>
-		<%	}  %>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarColor01">
-				<ul class="navbar-nav mr-auto">
-
-				</ul>
- 			<%@include file="./include/loginInfo.jsp" %>
-			</div>
-		</div>
-	</nav>
-
-
+	<%@include file="./include/topMenu.jsp"%>
+			
 	<!-- Writig Form -->
 	<div class="container">
 		<label for="exampleInputEmail1">&nbsp;</label> <br> <label
 			for="exampleInputEmail1">&nbsp;</label> <br>
 		<form id="writeForm" method="post" action="boardcontroller">
 			<fieldset>
-				<legend>Writing</legend>
+				<legend>아이디어 공유</legend>
 				<div class="form-group">
-					<label for="exampleSelect1">Title</label> <input type="text"
+					<label for="exampleSelect1">제목</label> <input type="text"
 						class="form-control" name="title" placeholder="Enter title">
 				</div>
 				<div class="form-group">
@@ -107,7 +87,6 @@
 			</fieldset>
 		</form>
 	</div>
-	
 	<!-- Footer -->
 	<%@include file="./include/footer.jsp" %>
 	<!-- /.Footer -->

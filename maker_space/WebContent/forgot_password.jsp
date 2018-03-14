@@ -50,20 +50,24 @@ $(document).ready(function(){
 <body class="bg-dark">
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">
-			<div class="card-header">Change Password</div>
+			<div class="card-header">비밀번호 변경하기
+			<button type="button" class="close" aria-label="Close"
+					onclick="javascript:history.back()">
+					<span aria-hidden="true">&times;</span>
+				</button></div>
 			<div class="card-body">
 				<form method="post" action="membercontroller">
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-8">
-								<label for="exampleInputEmail1">Email address</label> <input
+								<label for="exampleInputEmail1">이메일</label> <input
 									class="form-control" name="email" type="email" id='email'
-									aria-describedby="emailHelp" placeholder="Enter email">
+									aria-describedby="emailHelp" placeholder="이메일을 입력해주세요">
 							</div>
 							<div class="col-md-4">
 								<label for="exampleInputEmail1">&nbsp;</label> <input
 									class="btn btn-primary btn-block" type="button" class='btn'
-									id='auth' value='send Code'>
+									id='auth' value='인증코드'>
 							</div>
 						</div>
 						<div class="form-group">
@@ -71,32 +75,33 @@ $(document).ready(function(){
 								<div class="col-md-6">
 									<br> <label for="confirmedEmailCode">Code</label> <input
 										class="form-control" name="code" type="text"
-										Placeholder="Code">
+										Placeholder="인증코드를 입력해주세요">
 								</div>
 							</div>
 						</div>
 					</div>
 						<div class="form-group">
 							<div class="form-row">
-								<div class="col-md-6">
-									<label for="exampleInputPassword1">New Password</label> <input
+								<div class="col-md-9">
+									<label for="exampleInputPassword1">새 비밀번호</label> <input
 										class="form-control" name="password" type="password"
-										placeholder="Password">
+										placeholder="새로운 비밀번호를 입력해주세요"></br>
 								</div>
-								<div class="col-md-6">
-									<label for="exampleConfirmPassword">Confirm password</label> <input
+								</div>
+								<div class="form-row">
+								<div class="col-md-9">
+									<label for="exampleConfirmPassword">비밀번호 확인</label> <input
 										class="form-control" name="confirmedPassword" type="password"
-										placeholder="Confirm password">
+										placeholder="새로운 비밀번호를 다시 입력해주세요">
 								</div>
 							</div>
 						</div>
 						<input type="hidden" name="action" value="forgotPassword">
-						<button type="submit" class="btn btn-primary btn-block">change
-							password</button>
+						<button type="submit" class="btn btn-primary btn-block">비밀번호 변경</button>
 				</form>
 				<div class="text-center">
-					<a class="d-block small mt-3" href="register.jsp">Register an
-						Account</a> <a class="d-block small" href="login.jsp">Login Page</a>
+					<a class="d-block small mt-3" href="register.jsp">회원가입</a> 
+					<a class="d-block small" href="login.jsp">로그인</a>
 				</div>
 			</div>
 		</div>

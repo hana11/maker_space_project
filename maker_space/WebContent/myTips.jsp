@@ -3,18 +3,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% int flag =0 ; %>   
+   
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<head>
 <title>MakerSpace</title>
 <link rel="stylesheet" href="./Resource/mms/vendor/bootstrap/css/my.css" />
 <!-- Bootstrap core CSS -->
@@ -60,9 +57,13 @@
 </style>
 </head>
 <body>
-	<%
-		String CONTEXT_PATH = application.getContextPath();
-	%>
+<%
+      String CONTEXT_PATH = application.getContextPath();
+%>
+   <!-- Navigation -->
+  <!-- Navigation -->
+    <!-- Navigation -->
+	
 	<%@include file="./include/topMenu.jsp"%>
    <!-- Page Content -->
    <div class="container">
@@ -76,26 +77,26 @@
 			<!-- Table -->
 			<div class="col-lg-9">
 				<h1 class="my-4">&nbsp;</h1>
-				<div class="container">
-					<div class="container">
-              	 <ol class="breadcrumb">
-                  <li class="breadcrumb-item">아이디어 채택현황</li>
-               </ol>
-			</div>
+			<div class="container">
+			<ol class="breadcrumb">
+            	<li class="breadcrumb-item">나의 팁</li>
+            </ol>
             </div>
+            
 				<div class="container">
 					<table class="table table-hover" style="border: solid 2px #cccccc">
 						<thead>
 							<tr class="table-active">
-								<th scope="col"></th>
+								<th scope="col"> </th>
 								<th scope="col">제 목</th>
 								<th scope="col">작성자</th>
 								<th scope="col">작성일</th>
 								<th scope="col">조회수</th>
+								<th scope="col">스크랩수</th>
 							</tr>
 						</thead>
 
-						<c:if test="${map.lists.size()==0 }">
+						<c:if test="${tipMap.lists.size()==0 }">
 							<tfoot>
 								<tr align="center">
 									<td width="5"></td>
@@ -107,16 +108,16 @@
 							</tfoot>
 						</c:if>
 						<tbody>
-							<c:forEach items="${map.lists}" var="dto" varStatus="status">
+							<c:forEach items="${tipMap.lists}" var="dto" varStatus="status">
 								<tr>
-									<td width="5"><c:out
-											value="${map.pageTotalCount - status.index}" /></td>
-									<td width="250"><a
-										href="boardcontroller?action=getBoard&category=select&boardIndex=${dto.businessIdx}"><c:out
+									<td width="5"><c:out value="${tipMap.pageTotalCount - status.index}" /></td>
+									<td width="240"><a
+										href="boardcontroller?action=getTipBoard&category=myTips&tipBoardsIndex=${dto.tipIdx}"><c:out
 												value="${dto.title}" /></a></td>
 									<td width="50"><c:out value="${dto.name}" /></td>
 									<td width="10"><c:out value="${dto.writeDate}" /></td>
 									<td width="5"><c:out value="${dto.hits}" /></td>
+									<td width="5"><c:out value="${dto.scraps}" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -126,67 +127,61 @@
 					<!-- Paginatoin -->
 					<div style="display: inline-block; vertical-align: middle;">
 						<ul class="pagination">
-							<c:if test="${map.prevPage <= 0}">
+							<c:if test="${tipMap.prevPage <= 0}">
 								<li class="page-item disabled"><a class="page-link">&laquo;</a>
 								</li>
 							</c:if>
-							<c:if test="${map.prevPage > 0}">
+							<c:if test="${tipMap.prevPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getBoard&page=${map.prevPage}&category=select&field=${map.field }">&laquo;</a>
+									href="boardcontroller?action=getTipBoards&page=${tipMap.prevPage}&category=myTips&field=${tipMap.field }">&laquo;</a>
 								</li>
 							</c:if>
-							<c:if test="${map.pageCount <= 5}">
-								<c:forEach begin="${map.beginPage}"
-									end="${map.beginPage + map.pageCount - 1}" var="page">
+							<c:if test="${tipMap.pageCount <= 5}">
+								<c:forEach begin="${tipMap.beginPage}"
+									end="${tipMap.beginPage + tipMap.pageCount - 1}" var="page">
 									<c:choose>
-										<c:when test="${map.currentPage == page}">
+										<c:when test="${tipMap.currentPage == page}">
 											<li class="page-item active"><a class="page-link"
 												href="#">${page}</a>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getBoard&page=${page}&field=${map.field}&category=select">${page}</a></li>
+												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=myTips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 							</c:if>
-							<c:if test="${map.pageCount > 5}">
-								<c:forEach begin="${map.beginPage}" end="${map.endPage}"
+							<c:if test="${tipMap.pageCount > 5}">
+								<c:forEach begin="${tipMap.beginPage}" end="${tipMap.endPage}"
 									var="page">
 									<c:choose>
-										<c:when test="${map.currentPage == page}">
+										<c:when test="${tipMap.currentPage == page}">
 											<li class="page-item active"><a class="page-link"
 												href="#">${page}</a>
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getBoard&page=${page}&field=${map.field}&category=select">${page}</a></li>
+												href="boardcontroller?action=getTipBoards&page=${page}&field=${tipMap.field}&category=myTips">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 							</c:if>
-							<c:if test="${map.nextPage <= 0}">
+							<c:if test="${tipMap.nextPage <= 0}">
 								<li class="page-item disabled"><a class="page-link">&raquo;</a>
 								</li>
 							</c:if>
-							<c:if test="${map.nextPage > 0}">
+							<c:if test="${tipMap.nextPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getBoard&page=${map.nextPage}&field=${map.field }&category=select">&raquo;</a>
+									href="boardcontroller?action=getTipBoards&page=${tipMap.nextPage}&field=${tipMap.field }&category=myTips">&raquo;</a>
 								</li>
 							</c:if>
 						</ul>
 					</div>
-				</div>
-		</div>
-	</div>
-</div>
-	<%@include file="./include/footer.jsp" %>
+           
+         </div>
+      </div>
+   </div>
+   </div>
 
-	<!-- Bootstrap core JavaScript -->
-	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
-	<script src="./Resource/mms/vendor/jquery/jquery.slim.min.js"></script>
-	<script
-		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="./Resource/mms/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

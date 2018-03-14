@@ -10,7 +10,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Register</title>
+<title>회원가입</title>
 <!-- Bootstrap core CSS-->
 <link href="./Resource/mms/vendor/bootstrap/css/bootstrap2.min.css"
 	rel="stylesheet">
@@ -52,7 +52,7 @@ $(document).ready(function(){
 	<div class="container">
 		<div class="card card-register mx-auto mt-5">
 			<div class="card-header">
-				Create an Account
+				회원가입
 				<button type="button" class="close" aria-label="Close"
 					onclick="javascript:history.back()">
 					<span aria-hidden="true">&times;</span>
@@ -63,45 +63,45 @@ $(document).ready(function(){
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputName">Name</label> <input
+								<label for="exampleInputName">이름</label> <input
 									class="form-control" name="name" type="text"
-									aria-describedby="nameHelp" placeholder="Enter name">
+									aria-describedby="nameHelp" placeholder="이름을 입력해주세요">
 							</div>
 							<div class="col-md-6">
-								<label for="exampleInputLastName">Phone Number</label> <input
+								<label for="exampleInputLastName">핸드폰 번호</label> <input
 									class="form-control" name="mobile" type="text"
-									aria-describedby="nameHelp" placeholder="Enter phone number">
+									aria-describedby="nameHelp" placeholder="핸드폰번호를 입력해주세요">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-8">
-								<label for="exampleInputEmail1">Email address</label> 
-								<input class="form-control" name="email" type="email" id='email' aria-describedby="emailHelp" placeholder="Enter email">
+								<label for="exampleInputEmail1">이메일 </label> 
+								<input class="form-control" name="email" type="email" id='email' aria-describedby="emailHelp" placeholder="이메일을 입력해주세요">
 							</div>
 							<div class = "col-md-4">
 								<label for="exampleInputEmail1">&nbsp;</label>
-								<input class="btn btn-primary btn-block" type="button" class='btn' id='auth' value='send Code'>
+								<input class="btn btn-primary btn-block" type="button" class='btn' id='auth' value='인증번호 발송'>
 							</div>
 							<div class="col-md-6">
 							<br>
-								<label for="confirmedEmailCode">Code</label> 
-								<input class="form-control" name="code" type="text" Placeholder="Code">
+								<label for="confirmedEmailCode">인증번호</label> 
+								<input class="form-control" name="code" type="text" Placeholder="인증번호를 입력해주세요">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputPassword1">Password</label> <input
+								<label for="exampleInputPassword1">비밀번호</label> <input
 									class="form-control" name="password" type="password"
-									placeholder="Password">
+									placeholder="비밀번호를 입력해주세요(6자리 이상)">
 							</div>
 							<div class="col-md-6">
-								<label for="exampleConfirmPassword">Confirm password</label> <input
+								<label for="exampleConfirmPassword">비밀번호 확인</label> <input
 									class="form-control" name="confirmPassword" type="password"
-									placeholder="Confirm password">
+									placeholder="비밀번호를 다시한번 입력해주세요">
 							</div>
 						</div>
 					</div>
@@ -109,8 +109,8 @@ $(document).ready(function(){
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="exampleInputPassword1">Company</label> 
-								<input class="form-control" name="company" type="text" placeholder="company">
+								<label for="exampleInputPassword1">소속</label> 
+								<input class="form-control" name="company" type="text" placeholder="소속 회사를 입력해주세요">
 							</div>
 						</div>
 					</div>
@@ -118,11 +118,10 @@ $(document).ready(function(){
 
 					<div class="text-center">
 						<input type="hidden" name="action" value="join">
-						<button type="submit" class="btn btn-primary btn-block">Sign up</button>
+						<button type="submit" class="btn btn-primary btn-block">회원가입</button>
 
-						<a class="d-block small mt-3" href="login.jsp">Login Page</a> <a
-							class="d-block small" href="forgot-password.jsp">Forgot
-							Password?</a>
+						<a class="d-block small mt-3" href="login.jsp">로그인</a> <a
+							class="d-block small" href="forgot_password.jsp">비밀번호 찾기</a>
 					</div>
 				</form>
 			</div>

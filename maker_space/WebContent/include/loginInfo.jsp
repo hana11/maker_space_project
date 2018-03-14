@@ -2,24 +2,24 @@
     pageEncoding="EUC-KR"%>
     
 			<% if(session.getAttribute("grade").equals("G") && session.getAttribute("name")!=null) { %>
-			<h7 class="navbar-brand"><%=session.getAttribute("company")%> <%=session.getAttribute("name")%></h7>
+			<body3><h8 class="navbar-brand2"><%=session.getAttribute("company")%> <%=session.getAttribute("name")%></h8></body3>
 			<% 	}else if(session.getAttribute("grade").equals("A") && session.getAttribute("name")!=null) { %>
-			<h7 class="navbar-brand"> 관리자 <%=session.getAttribute("name")%></h7>
+			<body3><h8 class="navbar-brand2">관리자 <%=session.getAttribute("name")%></h8></body3>
 			<%	} else {}  %>
-			
+			&nbsp;&nbsp;
 			<% if(session.getAttribute("name")!=null) { %>
 			<form method="post" action="membercontroller"class="form-inline my-2 my-lg-0">
          	<input type="hidden" name="action" value="logout">
-            <button type="submit" class="btn btn-secondary my-2 my-sm-0">Logout</button>
+            <button type="submit" class="btn btn-secondary my-2 my-sm-0">로그아웃</button>
             </form>
 			<% 	}else { %>
 			<form class="form-inline my-2 my-lg-0">
 				<button type="button" class="btn btn-secondary my-2 my-sm-0"
-					onclick="location.href='login.jsp'">Sign in</button>
+					onclick="location.href='login.jsp'">로그인</button>
 			</form>
 			&nbsp; &nbsp;
 			<form class="form-inline my-2 my-lg-0">
 				<button type="button" class="btn btn-secondary my-2 my-sm-0"
-					onclick="location.href='register.jsp'">Sign up</button>
+					onclick="location.href='register.jsp'">회원가입</button>
 			</form>
 			<%	}  %>

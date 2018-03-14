@@ -25,7 +25,7 @@
 	<div class="container">
 		<div class="card card-login mx-auto mt-5">
 			<div class="card-header">
-				Sign In
+				로그인
 				<button type="button" class="close" aria-label="Close" onclick="javascript:history.back()" >
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -34,21 +34,20 @@
 
 				<form method="post" action="membercontroller">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label> <input
+						<label for="exampleInputEmail1">이메일</label> <input
 							class="form-control" name="email" type="email"
-							aria-describedby="emailHelp" placeholder="Enter email">
+							aria-describedby="emailHelp" placeholder="이메일을 입력해주세요.">
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> <input
+						<label for="exampleInputPassword1">비밀번호</label> <input
 							class="form-control" name="password" type="password"
-							placeholder="Password">
+							placeholder="비밀번호를 입력해주세요.">
 					</div>
 					<div class="text-center">
 						<input type="hidden" name="action" value="login"> <input
-							class="btn btn-primary btn-block" type="submit" value="Sign in">
-						<a class="d-block small mt-3" href="register.jsp">Register an
-							Account</a> <a class="d-block small" href="forgot_password.jsp">Forgot
-							Password?</a>
+							class="btn btn-primary btn-block" type="submit" value="로그인">
+						<a class="d-block small mt-3" href="register.jsp">회원가입</a> 
+						<a class="d-block small" href="forgot_password.jsp">비밀번호 찾기</a>
 					</div>
 				</form>
 			</div>

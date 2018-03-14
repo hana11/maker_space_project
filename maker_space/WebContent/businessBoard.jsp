@@ -1,20 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<% int flag =0 ; %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
 <title>MakerSpace</title>
 <link rel="stylesheet" href="./Resource/mms/vendor/bootstrap/css/my.css" />
 <!-- Bootstrap core CSS -->
@@ -60,9 +58,8 @@
 </style>
 </head>
 <body>
-	<%
-		String CONTEXT_PATH = application.getContextPath();
-	%>
+	<!-- Navigation -->
+	
 	<%@include file="./include/topMenu.jsp"%>
    <!-- Page Content -->
    <div class="container">
@@ -77,12 +74,20 @@
 			<div class="col-lg-9">
 				<h1 class="my-4">&nbsp;</h1>
 				<div class="container">
-					<div class="container">
-              	 <ol class="breadcrumb">
-                  <li class="breadcrumb-item">아이디어 채택현황</li>
-               </ol>
-			</div>
-            </div>
+				
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item">아이디어</li>
+					</ol>
+				</div>
+				<div class="floatRight">
+					<form method="post" action="write.jsp">
+						<input type="hidden" name="category"
+							value=<%=request.getAttribute("category")%>> 
+						<input type="submit" class="btn btn-lg btn-primary"
+							style="display: inline-block;" value="글쓰기" />
+					</form>
+					<br>
+				</div>
 				<div class="container">
 					<table class="table table-hover" style="border: solid 2px #cccccc">
 						<thead>
@@ -112,7 +117,7 @@
 									<td width="5"><c:out
 											value="${map.pageTotalCount - status.index}" /></td>
 									<td width="250"><a
-										href="boardcontroller?action=getBoard&category=select&boardIndex=${dto.businessIdx}"><c:out
+										href="boardcontroller?action=getBoard&category=<%=request.getAttribute("category")%>&businessBoardsIdx=${dto.businessIdx}"><c:out
 												value="${dto.title}" /></a></td>
 									<td width="50"><c:out value="${dto.name}" /></td>
 									<td width="10"><c:out value="${dto.writeDate}" /></td>
@@ -132,7 +137,7 @@
 							</c:if>
 							<c:if test="${map.prevPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getBoard&page=${map.prevPage}&category=select&field=${map.field }">&laquo;</a>
+									href="boardcontroller?action=getBoards&page=${map.prevPage}&category=<%=request.getAttribute("category")%>>&field=${map.field }">&laquo;</a>
 								</li>
 							</c:if>
 							<c:if test="${map.pageCount <= 5}">
@@ -145,7 +150,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getBoard&page=${page}&field=${map.field}&category=select">${page}</a></li>
+												href="boardcontroller?action=getBoards&page=${page}&field=${map.field}&category=<%=request.getAttribute("category")%>">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -160,7 +165,7 @@
 										</c:when>
 										<c:otherwise>
 											<li class="page-item"><a class="page-link"
-												href="boardcontroller?action=getBoard&page=${page}&field=${map.field}&category=select">${page}</a></li>
+												href="boardcontroller?action=getBoards&page=${page}&field=${map.field}&category=<%=request.getAttribute("category")%>">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -171,22 +176,27 @@
 							</c:if>
 							<c:if test="${map.nextPage > 0}">
 								<li class="page-item"><a class="page-link"
-									href="boardcontroller?action=getBoard&page=${map.nextPage}&field=${map.field }&category=select">&raquo;</a>
+									href="boardcontroller?action=getBoards&page=${map.nextPage}&field=${map.field }&category=<%=request.getAttribute("category")%>">&raquo;</a>
 								</li>
 							</c:if>
 						</ul>
 					</div>
+
 				</div>
+				<!-- Search bar -->
+				<%@include file="./include/searchbar.jsp" %>
+			</div>
 		</div>
 	</div>
-</div>
-	<%@include file="./include/footer.jsp" %>
-
+	
+			
+	<!-- Footer -->
+	<%@include file="./include/footer.jsp"%>
 	<!-- Bootstrap core JavaScript -->
 	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
-	<script src="./Resource/mms/vendor/jquery/jquery.slim.min.js"></script>
 	<script
 		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="./Resource/mms/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

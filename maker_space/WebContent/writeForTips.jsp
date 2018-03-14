@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,81 +41,60 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 </head>
-
+<
 <body>
-
+	<% String category = request.getParameter("category");%>
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<% if(session.getAttribute("name")!=null) { %>
-		<a class="navbar-brand" href="mainService.jsp">MakerSpace</a>
-		<% 	}else { %>
-		<a class="navbar-brand" href="index.jsp">MakerSpace</a>
-		<%	}  %>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarResponsive" aria-controls="navbarResponsive"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarColor01">
-				<ul class="navbar-nav mr-auto">	</ul>
-				<%@include file="./include/loginInfo.jsp" %>
-			</div>
-		</div>
-	</nav>
+	<%@include file="./include/topMenu.jsp"%>
 
 
 	<!-- Writig Form -->
 	<div class="container">
 		<label for="exampleInputEmail1">&nbsp;</label> <br> <label
 			for="exampleInputEmail1">&nbsp;</label> <br>
-		<form>
+		<form id="writeForm" method="post" action="tipboardcontroller">
 			<fieldset>
-				<legend>Writing</legend>
-				<label for="exampleInputEmail1">&nbsp;</label> <br>
+				<legend>팁 공유</legend>
 				<div class="form-group">
-					<label for="exampleInputEmail1">Email address</label> <input
-						type="email" class="form-control" id="email"
-						aria-describedby="emailHelp" placeholder="Enter email">
+					<label for="exampleSelect1">제목</label> <input type="text"
+						class="form-control" name="title" placeholder="제목을 입력하세요">
 				</div>
 				<div class="form-group">
-					<label for="exampleSelect1">Title</label> <input type="email"
-						class="form-control" id="title" aria-describedby="emailHelp"
-						placeholder="Enter title">
+					<label for="exampleSelect1">해시태그</label> <input type="text"
+						class="form-control" name="hash_tag" placeholder="해시태그를 입력하세요(선택)">
 				</div>
 				<div class="form-group">
-					<label for="exampleSelect1">Hash Tag</label> <input type="email"
-						class="form-control" id="hash_tag" aria-describedby="emailHelp"
-						placeholder="Enter hash tag">
+					<label for="exampleTextarea">기대효과</label>
+					<textarea class="form-control" name="result" rows="6"
+						form="writeForm" placeholder="기대효과"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleTextarea">Expectation Effectiveness</label>
-					<textarea class="form-control" id="result" rows="6"
-						placeholder="Enter expectation effectiveness"></textarea>
+					<label for="exampleTextarea">내용</label>
+					<textarea class="form-control" name="content" rows="10"
+						form="writeForm" placeholder="내용을 입력하세요"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="exampleTextarea">Content</label>
-					<textarea class="form-control" id="content" rows="10"
-						placeholder="Enter content"></textarea>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputFile">File input</label> <input type="file"
-						class="form-control-file" id="file" aria-describedby="fileHelp">
+					<label for="exampleInputFile">첨부파일</label> <input type="file"
+						class="form-control-file" name="file" aria-describedby="fileHelp">
 					<small id="fileHelp" class="form-text text-muted">File max
 						capacity</small>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Scrap</button>
+					<input type="hidden" name="category" value=<%=request.getParameter("category")%>>
+					<input type="hidden" name="action" value="write">
+					<button type="submit" class="btn btn-block-sm btn-lg btn-primary"
+						style="display: inline-block;">등록</button>
 				</div>
 			</fieldset>
 		</form>
 	</div>
-
+	
+	<!-- Footer -->
 	<%@include file="./include/footer.jsp" %>
-
+	<!-- /.Footer -->
+	
 	<!-- Bootstrap core JavaScript -->
 	<script src="./Resource/mms/vendor/jquery/jquery.min.js"></script>
-	<script src="./Resource/mms/vendor/jquery/jquery.slim.min.js"></script>
 	<script
 		src="./Resource/mms/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="./Resource/mms/vendor/bootstrap/js/bootstrap.min.js"></script>

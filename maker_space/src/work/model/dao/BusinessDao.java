@@ -31,6 +31,7 @@ public class BusinessDao implements InterfaceBoard {
 	/** Factory Pattern : Connection, close() */
 	private FactoryDao factory = FactoryDao.getInstance();
 	private static BusinessDao instance = new BusinessDao();
+	int flag = 0;
 
 	/**
 	 * 기본생성자
@@ -77,17 +78,16 @@ public class BusinessDao implements InterfaceBoard {
 					sql = "insert into business_boards "
 							+ "(business_idx, title, content, result, files, hits, email, write_date, name)"
 							+ "values(1, ?, ?, ?, ?, ?, ?, ?, ?)";
-					
-					
-				} else if (category.equals("media")) {
+
+				} else if (category.equals("market")) {
 					sql = "insert into business_boards "
 							+ "(business_idx, title, content, result, files, hits, email, write_date, name)"
 							+ "values(2, ?, ?, ?, ?, ?, ?, ?, ?)";
-				} else if (category.equals("maket")) {
+				} else if (category.equals("media")) {
 					sql = "insert into business_boards "
 							+ "(business_idx, title, content, result, files, hits, email, write_date, name)"
 							+ "values(3, ?, ?, ?, ?, ?, ?, ?, ?)";
-				} else if (category.equals("etc")) {
+				}  else if (category.equals("etc")) {
 					sql = "insert into business_boards "
 							+ "(business_idx, title, content, result, files, hits, email, write_date)"
 							+ "values(4, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -105,10 +105,10 @@ public class BusinessDao implements InterfaceBoard {
 				pstmt.setString(7, writeDate);
 				pstmt.setString(8, name);
 				pstmt.executeUpdate();
-				
+
 				sql = "select last_insert_id() 'boards_index'";
 				pstmt = conn.prepareStatement(sql);
-				
+
 				rs = pstmt.executeQuery();
 				if (rs.next()) {
 					return rs.getInt("boards_index");
@@ -122,6 +122,7 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
+
 	@SuppressWarnings("resource")
 	public int registerTipBoard(String category, TipIdeaBoard dto) {
 		String title = dto.getTitle();
@@ -138,36 +139,42 @@ public class BusinessDao implements InterfaceBoard {
 		Connection conn = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
+
 		try {
+			System.out.println();
 			conn = factory.getConnection();
+			System.out.println("TIP WRITE >> 쿼리 시도 " + category);
 			if (category.equals("tips")) {
-					sql = "insert into tip_boards "
-							+ "(title, content, result, files, hits,scraps, email, write_date,name)"
-							+ "values(?, ?, ?, ?, ?, ?, ?, ?,?)";
+				sql = "insert into tip_boards " + "(title, content, result, files, hits,scraps, email, write_date,name)"
+						+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			} else {
-					return 0;
-				}
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setString(3, result);
-				pstmt.setString(4, files);
-				pstmt.setInt(5, hits);
-				pstmt.setInt(6, scraps);
-				pstmt.setString(7, email);
-				pstmt.setString(8, writeDate);
-				pstmt.setString(9, name);
-				pstmt.executeUpdate();
-				
-				sql = "select last_insert_id() 'tip_idx'";
-				pstmt = conn.prepareStatement(sql);
-				
-				rs = pstmt.executeQuery();
-				if (rs.next()) {
-					return rs.getInt("tip_idx");
-				}
-			
+				return 0;
+			}
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, result);
+			pstmt.setString(4, files);
+			pstmt.setInt(5, hits);
+			pstmt.setInt(6, scraps);
+			pstmt.setString(7, email);
+			pstmt.setString(8, writeDate);
+			pstmt.setString(9, name);
+			pstmt.executeUpdate();
+
+			System.out.println("TIP WRITE >> 쿼리 성공 ");
+
+			sql = "select last_insert_id() 'tip_idx'";
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				System.out.println(rs.getInt("tip_idx") + "::tip보드 마지막 인덱스");
+				return rs.getInt("tip_idx");
+			}
+
 		} catch (SQLException e) {
 			System.out.println("Error : BusinessDao registerBoard 에러");
 			e.printStackTrace();
@@ -176,31 +183,29 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
-	
+
 	public int registerMyBoard(String category, int boardIdx) {
 		String sql = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = factory.getConnection();
-			System.out.println("쿼리시도 : boardIdx = "+boardIdx);
+			System.out.println("쿼리시도 : boardIdx = " + boardIdx);
 			if (category.equals("tips")) {
-				sql = "insert into tip_my_boards"
-						+ "(tip_idx)"
-						+"values (?)";
+				sql = "insert into tip_my_boards" + "(tip_idx)" + "values (?)";
+				System.out.println("tip :: 쿼리 ");
 
-			} else if (category.equals("it") || category.equals("market") || category.equals("media") || category.equals("etc")) {
-					sql = "insert into my_idea_boards"
-							+ "(business_boards_idx)"
-							+"values (?)";
+			} else if (category.equals("it") || category.equals("market") || category.equals("media")
+					|| category.equals("etc")) {
+				sql = "insert into my_idea_boards" + "(business_boards_idx)" + "values (?)";
 			} else {
 				return 0;
 			}
-			
+
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, boardIdx);
 			int result = pstmt.executeUpdate();
-			System.out.println("쿼리성공? : boardIdx = "+boardIdx+"result : " +result);	
+			System.out.println("쿼리성공? : boardIdx = " + boardIdx + "result : " + result);
 			return result;
 
 		} catch (SQLException e) {
@@ -211,20 +216,19 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
+
 	public int registerMySelect(String category, int boardIdx) {
 		String sql;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = factory.getConnection();
-			System.out.println("쿼리시도 : boardIdx = "+boardIdx);
-			if(category.equals("select")) {
-			sql = "insert into select_boards"
-					+ "(business_boards_idx)"
-					+"values (?)";
-			
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, boardIdx);
+			System.out.println("쿼리시도 : boardIdx = " + boardIdx);
+			if (category.equals("select")) {
+				sql = "insert into select_boards" + "(business_boards_idx)" + "values (?)";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, boardIdx);
 			}
 			int result = pstmt.executeUpdate();
 			return result;
@@ -237,6 +241,75 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
+
+	/**
+	 * hits 업데이트 메서드
+	 * 
+	 * @param businessBoardsIdx
+	 * @return
+	 */
+	@SuppressWarnings("resource")
+	public int updateHits(int businessBoardsIdx) {
+		ResultSet rs = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = factory.getConnection();
+			String sql;
+			int hits = 0;
+			sql = "select hits from business_boards where business_boards_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, businessBoardsIdx);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				hits = rs.getInt("hits");
+			}
+			sql = "update business_boards set " + "hits=? where business_boards_idx =?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ++hits);
+			pstmt.setInt(2, businessBoardsIdx);
+			pstmt.executeUpdate();
+			return hits;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt, rs);
+		}
+		return 0;
+	}
+
+	/**
+	 * 꿀팁 스크랩 메서드
+	 * 
+	 * @param category
+	 * @param boardIdx
+	 * @return
+	 */
+	public int registerMyScraps(String category, int tipIdx) {
+		String sql;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = factory.getConnection();
+			System.out.println("쿼리시도 : tipIdx = " + tipIdx);
+			if (category.equals("select")) {
+				sql = "insert into scraps_boards" + "(tip_idx)" + "values (?)";
+
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, tipIdx);
+			}
+			int result = pstmt.executeUpdate();
+			return result;
+
+		} catch (SQLException e) {
+			System.out.println("Error : BusinessDao registerMyScraps 에러");
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
 	/**
 	 * 글 수정 메서드 변경 될 수 있는 부분 index, title, content, result , files 부분만 업데이트 된다.
 	 * 
@@ -291,6 +364,7 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
+
 	/**
 	 * 게시판 삭제
 	 * 
@@ -476,7 +550,6 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return null;
 	}
-	
 
 	/**
 	 * business 테이블
@@ -486,12 +559,13 @@ public class BusinessDao implements InterfaceBoard {
 	 * @param listSize
 	 * @return
 	 */
-	public ArrayList<IdeaBoard> getBoards(int currentPage, int listSize, String category) {
+	public ArrayList<IdeaBoard> getBoards(int currentPage, int listSize, String category, String _email) {
 		ResultSet rs = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ArrayList<IdeaBoard> lists = new ArrayList<IdeaBoard>();
-		
+		ArrayList<TipIdeaBoard> tipLists = new ArrayList<TipIdeaBoard>();
+		String mail = _email;
 		try {
 			conn = factory.getConnection();
 
@@ -504,21 +578,23 @@ public class BusinessDao implements InterfaceBoard {
 			} else if (category.equals("market")) {
 				String sql = "select * from business_boards where business_idx=3 order by business_boards_idx desc";
 				pstmt = conn.prepareStatement(sql);
-			} else if(category.equals("myIdea")) {
-				String sql = "select business_boards.* from business_boards inner join my_idea_boards on business_boards.business_boards_idx = my_idea_boards.business_boards_idx";
-				pstmt = conn.prepareStatement(sql);
-				
-			} else if(category.equals("myTips")) {
+			} else if (category.equals("myTips")) {
 				String sql = "select tip_boards.* from tip_boards inner join tip_my_boards on tip_boards.tip_idx = tip_my_boards.tip_idx";
 				pstmt = conn.prepareStatement(sql);
 				System.out.println("쿼리 실행 끝");
-			} else if(category.equals("select")) {
+			} else if (category.equals("select")) {
 				String sql = "select business_boards.* from business_boards inner join select_boards on business_boards.business_boards_idx = select_boards.business_boards_idx";
 				pstmt = conn.prepareStatement(sql);
 				System.out.println("쿼리 실행 끝");
-			} else {
+			} else if (category.equals("etc")) {
 				String sql = "select * from business_boards where business_idx=4 order by business_boards_idx desc";
 				pstmt = conn.prepareStatement(sql);
+			} else { // my board에서 인자를 이메일로 받아 왔을 때
+
+				String sql = "select * from business_boards where email =?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mail);
+
 			}
 			rs = pstmt.executeQuery();
 
@@ -528,10 +604,13 @@ public class BusinessDao implements InterfaceBoard {
 			} else {
 				rs.absolute(abPage);
 			}
-			if(!category.equals("myTips")) {
+			if (!category.equals("myTips") && !category.equals("tips")) {
 				for (int i = 0; i < listSize; i++) {
 					{
+						System.out.println("category ::" +category);
+						System.out.println("BoardController :: 쿼리 갯수 " + listSize);
 						int businessBoardsIdx = rs.getInt("business_boards_idx");
+						System.out.println("BoardController :: 뽑히는 보드의 인덱스"+businessBoardsIdx);
 						String title = rs.getString("title");
 						String content = rs.getString("content");
 						String result = rs.getString("result");
@@ -540,8 +619,8 @@ public class BusinessDao implements InterfaceBoard {
 						String email = rs.getString("email");
 						String writeDate = rs.getString("write_date");
 						String name = rs.getString("name");
-						lists.add(new IdeaBoard(businessBoardsIdx, title, content, result, files, hits, email, writeDate,
-								name));
+						lists.add(new IdeaBoard(businessBoardsIdx, title, content, result, files, hits, email,
+								writeDate, name));
 						if (!rs.next()) {
 							break;
 						}
@@ -556,19 +635,18 @@ public class BusinessDao implements InterfaceBoard {
 						String result = rs.getString("result");
 						String files = rs.getString("files");
 						int hits = rs.getInt("hits");
-						int scraps = rs.getInt("scrpas");
+						int scraps = rs.getInt("scraps");
 						String email = rs.getString("email");
 						String writeDate = rs.getString("write_date");
 						String name = rs.getString("name");
-						lists.add(new TipIdeaBoard(tipBoardsIdx, title, content, result, files, hits,writeDate,email, scraps,
-								name));
+						tipLists.add(new TipIdeaBoard(tipBoardsIdx, title, content, result, files, hits, email, writeDate, name, scraps));
 						if (!rs.next()) {
 							break;
 						}
 					}
 				}
 			}
-			
+
 			return lists;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -577,24 +655,27 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return lists;
 	}
-	
-	public ArrayList<TipIdeaBoard> getTipBoards(int currentPage, int listSize, String category) { 
+
+	@SuppressWarnings("resource")
+	public ArrayList<TipIdeaBoard> getTipBoards(int currentPage, int listSize, String category, String _email) {
 		ResultSet rs = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ArrayList<TipIdeaBoard> lists = new ArrayList<TipIdeaBoard>();
+		String mail = _email;
 		try {
 			conn = factory.getConnection();
 
-			if(category.equals("myTips")) { // 내가 작성한 꿀팁 모아보기 게시판
-				String sql = "select tip_boards.* from tip_boards inner join tip_my_boards on tip_boards.tip_idx = tip_my_boards.tip_idx";
+			if (category.equals("myTips")) { // 내가 작성한 꿀팁 모아보기 게시판
+				String sql = "select * from tip_boards where email =? order by tip_idx desc";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mail);
+
+			} else if (category.equals("tips")) { // 꿀팁 전체확인 게시판
+				String sql = "select * from tip_boards order by tip_idx desc";
 				pstmt = conn.prepareStatement(sql);
 				System.out.println("쿼리 실행 끝");
-			} else if(category.equals("tips")) { // 꿀팁 전체확인 게시판
-				String sql = "select * from tip_boards order by tip_idx desc ";
-				pstmt = conn.prepareStatement(sql);
-				System.out.println("쿼리 실행 끝");
-			} 
+			}
 			rs = pstmt.executeQuery();
 
 			int abPage = (currentPage - 1) * listSize + 1;
@@ -603,28 +684,23 @@ public class BusinessDao implements InterfaceBoard {
 			} else {
 				rs.absolute(abPage);
 			}
-			if(!category.equals("etc")) {
-				for (int i = 0; i < listSize; i++) {
-					{
-						int tipBoardsIdx = rs.getInt("tip_idx");
-						String title = rs.getString("title");
-						String content = rs.getString("content");
-						String result = rs.getString("result");
-						String files = rs.getString("files");
-						int hits = rs.getInt("hits");
-						int scraps = rs.getInt("scrpas");
-						String email = rs.getString("email");
-						String writeDate = rs.getString("write_date");
-						String name = rs.getString("name");
-						lists.add(new TipIdeaBoard(tipBoardsIdx, title, content, result, files, hits,writeDate,email, scraps,
-								name));
-						if (!rs.next()) {
-							break;
-						}
-					}
+			for (int i = 0; i < listSize; i++) {
+				int tipBoardsIdx = rs.getInt("tip_idx");
+				System.out.println(">>>!!: " +rs.getInt("tip_idx"));
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String result = rs.getString("result");
+				String files = rs.getString("files");
+				int hits = rs.getInt("hits");
+				int scraps = rs.getInt("scraps");
+				String email = rs.getString("email");
+				String writeDate = rs.getString("write_date");
+				String name = rs.getString("name");
+				lists.add(new TipIdeaBoard(tipBoardsIdx, title, content, result, files, hits, email, writeDate, name, scraps));
+				if (!rs.next()) {
+					break;
 				}
-			} 
-			
+			}
 			return lists;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -632,9 +708,148 @@ public class BusinessDao implements InterfaceBoard {
 			factory.close(conn, pstmt, rs);
 		}
 		return lists;
-	
 	}
-	public int getTotalCount() {
+	/**
+	 * boards it count 메서드
+	 * 
+	 * @return
+	 */
+	public int getTotalItCount() {
+		ResultSet result;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = factory.getConnection();
+
+			String sql = "select count(*) from business_boards where business_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			result = pstmt.executeQuery();
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	/**
+	 * boards it count 메서드
+	 * 
+	 * @return
+	 */
+	public int getTotalMyCount(String email) {
+		ResultSet result;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = factory.getConnection();
+
+			String sql = "select count(*) from business_boards where email=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
+			result = pstmt.executeQuery();
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	/**
+	 * boards market count 메서드
+	 * 
+	 * @return
+	 */
+	public int getTotalMarketCount() {
+		ResultSet result;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = factory.getConnection();
+
+			String sql = "select count(*) from business_boards where business_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 2);
+			result = pstmt.executeQuery();
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	/**
+	 * boards media count 메서드
+	 * 
+	 * @return
+	 */
+	public int getTotalMediaCount() {
+		ResultSet result;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = factory.getConnection();
+
+			String sql = "select count(*) from business_boards where business_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 3);
+			result = pstmt.executeQuery();
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	/**
+	 * boards etc count 메서드
+	 * 
+	 * @return
+	 */
+	public int getTotalEtcCount() {
+		ResultSet result;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			conn = factory.getConnection();
+
+			String sql = "select count(*) from business_boards where business_idx=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 4);
+			result = pstmt.executeQuery();
+			if (result.next()) {
+				return result.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			factory.close(conn, pstmt);
+		}
+		return 0;
+	}
+
+	public int getTotalTipCount() {
 		ResultSet result;
 
 		Connection conn = null;
@@ -643,7 +858,7 @@ public class BusinessDao implements InterfaceBoard {
 		try {
 			conn = factory.getConnection();
 
-			String sql = "select count(*) from business_boards";
+			String sql = "select count(*) from tip_boards";
 			pstmt = conn.prepareStatement(sql);
 			result = pstmt.executeQuery();
 			if (result.next()) {
@@ -656,17 +871,24 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return 0;
 	}
-	public int getTotalTipCount() {
-		ResultSet result;
 
+	/**
+	 * 나의 팁 테이블 개수 메서드
+	 * 
+	 * @param email
+	 * @return
+	 */
+	public int getTotalMyTipCount(String email) {
+		ResultSet result;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 
 		try {
 			conn = factory.getConnection();
 
-			String sql = "select count(*) from tip_boards";
+			String sql = "select count(*) from tip_boards where email=?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, email);
 			result = pstmt.executeQuery();
 			if (result.next()) {
 				return result.getInt(1);
@@ -699,8 +921,9 @@ public class BusinessDao implements InterfaceBoard {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
+				int businessIdx = rs.getInt("business_idx");
 				int businessBoardsIdx = rs.getInt("business_boards_idx");
-				System.out.println(businessBoardsIdx);
+				System.out.println(">>>>>>>>>>>>>> " + businessBoardsIdx);
 				String title = rs.getString("title");
 				String content = rs.getString("content");
 				String result = rs.getString("result");
@@ -709,7 +932,8 @@ public class BusinessDao implements InterfaceBoard {
 				String email = rs.getString("email");
 				String writeDate = rs.getString("write_date");
 				String name = rs.getString("name");
-				return new IdeaBoard(businessBoardsIdx, title, content, result, files, hits, email, writeDate, name);
+				return new IdeaBoard(businessIdx, businessBoardsIdx, title, content, result, files, hits, email,
+						writeDate, name);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -718,6 +942,7 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return null;
 	}
+
 	public TipIdeaBoard getTipBoard(int tipBoardsIndex) {
 		ResultSet rs = null;
 		Connection conn = null;
@@ -740,7 +965,7 @@ public class BusinessDao implements InterfaceBoard {
 				String email = rs.getString("email");
 				String writeDate = rs.getString("write_date");
 				String name = rs.getString("name");
-				return new TipIdeaBoard(tipIndex, title, content, result, files, hits, writeDate,email, scraps, name);
+				return new TipIdeaBoard(tipIndex, title, content, result, files, hits, email, writeDate, name, scraps);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -749,5 +974,5 @@ public class BusinessDao implements InterfaceBoard {
 		}
 		return null;
 	}
-	
+
 }
